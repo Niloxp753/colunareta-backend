@@ -9,11 +9,11 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
-    .setTitle('PizzaFresh')
-    .setDescription('Aplicação para gestão das mesas de uma pizzaria')
+    .setTitle('Coluna Reta')
+    .setDescription('A fazer')
     .setVersion('1.0.0')
     .addTag('status')
-    .addTag('table')
+    .addTag('users')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
