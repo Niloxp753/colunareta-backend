@@ -15,15 +15,28 @@ const prisma_service_1 = require("../prisma/prisma.service");
 let UserService = class UserService {
     constructor(prisma) {
         this.prisma = prisma;
-    }
-    create(createUserDto) {
-        return 'This action adds a new user';
+        this.userSelect = {
+            id: true,
+            nome: true,
+            nome_usuario: true,
+            email: true,
+            senha: false,
+            cargo: true,
+            admin: true,
+            createdAt: true,
+            updatedAt: true,
+        };
     }
     findAll() {
-        return this.prisma.user.findMany();
+        return this.prisma.user.findMany({
+            select: this.userSelect,
+        });
     }
     findOne(id) {
         return `This action returns a #${id} user`;
+    }
+    create(createUserDto) {
+        return 'This action adds a new user';
     }
     update(id, updateUserDto) {
         return `This action updates a #${id} user`;
