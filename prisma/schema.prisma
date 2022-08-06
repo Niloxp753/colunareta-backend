@@ -8,15 +8,31 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  nome String
+  id           String @id @default(uuid())
+  nome         String
   nome_usuario String
-  email String @unique
-  senha String
-  cargo String
-  Admin Int
+  email        String @unique
+  senha        String
+  cargo        String
+  Admin        Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+}
+
+model Institution {
+  id         String @id @default(uuid())
+  nome       String @unique
+  telefone   String
+  cep        String
+  logradouro String
+  bairro     String
+  cidade     String
+  estado     String
+
+  usuarios User[]
+  alunos   Studant[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
