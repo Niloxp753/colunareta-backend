@@ -8,18 +8,43 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  nome String
+  id           String @id @default(uuid())
+  nome         String
   nome_usuario String @unique
-  email String @unique
-  senha String
-  cargo String
-  admin Int
+  email        String @unique
+  senha        String
+  cargo        String
+  admin        Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+<<<<<<< HEAD
   instituicoes institution []
 
+=======
+>>>>>>> ff8cbc4c85ae5cf589ee2490bcc396b705e5e733
   @@map("user")
+}
+
+model Institution {
+  id         String @id @default(uuid())
+  nome       String @unique
+  telefone   String
+  cep        String
+  logradouro String
+  bairro     String
+  cidade     String
+  estado     String
+
+  usuarios User[]
+  // alunos   Studant[] aguardando a criação do schema Studant para efetuar a relação One to Many
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+<<<<<<< HEAD
+=======
+  @@map("institution")
+>>>>>>> 95acbe5b9b40e9f1d37b750b3af240ed37a96dd5
 }
