@@ -33,9 +33,13 @@ model Institution {
   estado     String
 
   usuarios User[]
-  alunos   Studant[]
+  // alunos   Studant[] aguardando a criação do schema Studant para efetuar a relação One to Many
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+<<<<<<< HEAD
+=======
+  @@map("institution")
+>>>>>>> 95acbe5b9b40e9f1d37b750b3af240ed37a96dd5
 }
