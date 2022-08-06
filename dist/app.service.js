@@ -9,8 +9,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
 let AppService = class AppService {
-    getHello() {
-        return 'alex funcionando';
+    getAppStatus() {
+        return 'Server is running! 🚀\n Please check http://localhost:3333/api for Swagger docs...';
     }
 };
 AppService = __decorate([
