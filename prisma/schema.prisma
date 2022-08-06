@@ -8,32 +8,18 @@ datasource db {
 }
 
 model User {
-<<<<<<< HEAD
-  id String @id @default(uuid())
-  nome String
-  nome_usuario String @unique
-  email String @unique
-  senha String
-  cargo String
-  admin Int
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-
-
-  @@map("user")
-=======
   id           String @id @default(uuid())
   nome         String
-  nome_usuario String
+  nome_usuario String @unique
   email        String @unique
   senha        String
   cargo        String
-  Admin        Int
+  admin        Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("user")
 }
 
 model Institution {
@@ -51,5 +37,4 @@ model Institution {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
->>>>>>> 10d4c6c72481589bb7c18b032240f7f3b32e985a
 }
