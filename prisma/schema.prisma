@@ -10,13 +10,16 @@ datasource db {
 model User {
   id String @id @default(uuid())
   nome String
-  nome_usuario String
+  nome_usuario String @unique
   email String @unique
   senha String
   cargo String
-  Admin Int
+  admin Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+
+
+
+  @@map("user")
 }
