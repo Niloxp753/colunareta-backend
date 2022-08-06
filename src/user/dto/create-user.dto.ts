@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { IsNumber, IsPositive, IsString, Matches, MinLength } from "class-validator";
 
 export class CreateUserDto {
 
@@ -23,4 +23,30 @@ export class CreateUserDto {
     example: "alexcaras1@hotmail.com"
   })
   email: string
+
+  @IsString()
+  @MinLength(8)
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message: 'Senha muito fraca',
+  })
+  @ApiProperty({
+    description: "Senha do usuário",
+    example: "Alex@123456"
+  })
+  senha: string
+
+  @IsString()
+  @ApiProperty({
+    description: "Cargo do usuário",
+    example: "Médico"
+  })
+  cargo: string
+
+  @IsNumber()
+  @IsPositive()
+  @ApiProperty({
+    description: "Hierarquia do usuário dentro do sistema",
+    example: 1
+  })
+  admin: number
 }
