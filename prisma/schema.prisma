@@ -16,14 +16,11 @@ model User {
   cargo        String
   admin        Int
 
+  instituicoes Institution[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-<<<<<<< HEAD
-  instituicoes institution []
-
-=======
->>>>>>> ff8cbc4c85ae5cf589ee2490bcc396b705e5e733
   @@map("user")
 }
 
@@ -38,13 +35,32 @@ model Institution {
   estado     String
 
   usuarios User[]
-  // alunos   Studant[] aguardando a criação do schema Studant para efetuar a relação One to Many
+  alunos   Studant[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-<<<<<<< HEAD
-=======
   @@map("institution")
->>>>>>> 95acbe5b9b40e9f1d37b750b3af240ed37a96dd5
+}
+
+model Studant {
+  id         String @id @default(uuid())
+  nome       String @unique
+  idade      Int
+  telefone   String
+  cpf        String
+  cep        String
+  logradouro String
+  bairro     String
+  cidade     String
+  estado     String
+  url_image  String
+
+  instituicao   Institution @relation(fields: [instituicaoId], references: [id])
+  instituicaoId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("studant")
 }
