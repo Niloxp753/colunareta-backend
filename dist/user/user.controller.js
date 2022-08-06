@@ -45,7 +45,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "create", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('find-all'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
@@ -73,7 +73,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "remove", null);
 UserController = __decorate([
-    (0, common_1.Controller)('user'),
+    (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);
 exports.UserController = UserController;
