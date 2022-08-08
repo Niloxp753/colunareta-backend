@@ -23,7 +23,7 @@ export class CreateUserDto {
   @IsString()
   @ApiProperty({
     description: "Cargo do usuário",
-    example: "Médico"
+    example: "Admin"
   })
   cargo: string
 }
