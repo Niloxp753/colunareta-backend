@@ -18,6 +18,9 @@ export class CreateUserDto {
   nome_usuario: string;
 
   @IsString()
+  @Matches(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i,{
+    message: "escreva um email valido"
+  })
   @ApiProperty({
     description: 'Email para cadastro',
     example: "alexcaras1@hotmail.com"

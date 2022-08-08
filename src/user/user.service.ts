@@ -43,7 +43,7 @@ export class UserService {
   }
 
   async findOne(id: string): Promise<User> {
-    return this.findOne(id);
+    return this.findById(id);
   }
 
   async create(dto: CreateUserDto): Promise<User> {

@@ -43,7 +43,7 @@ let UserService = class UserService {
         return record;
     }
     async findOne(id) {
-        return this.findOne(id);
+        return this.findById(id);
     }
     async create(dto) {
         if (dto.senha != dto.confirmaSenha) {
