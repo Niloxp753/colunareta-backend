@@ -51,6 +51,13 @@ __decorate([
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "senha", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        description: 'Confirmação de senha deve ser igual',
+        example: 'Alex@123456',
+    }),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "confirmaSenha", void 0);
+__decorate([
     (0, class_validator_1.IsString)(),
     (0, swagger_1.ApiProperty)({
         description: "Cargo do usuário",

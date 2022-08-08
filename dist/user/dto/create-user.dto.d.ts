@@ -3,6 +3,7 @@ export declare class CreateUserDto {
     nome_usuario: string;
     email: string;
     senha: string;
+    confirmaSenha: string;
     cargo: string;
     admin: number;
 }

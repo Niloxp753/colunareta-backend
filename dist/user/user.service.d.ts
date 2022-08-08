@@ -7,8 +7,10 @@ export declare class UserService {
     private userSelect;
     constructor(prisma: PrismaService);
     findAll(): Promise<User[]>;
-    findOne(id: string): string;
-    create(createUserDto: CreateUserDto): string;
-    update(id: string, updateUserDto: UpdateUserDto): string;
-    remove(id: string): string;
+    findById(id: string): Promise<User>;
+    findOne(id: string): Promise<User>;
+    create(dto: CreateUserDto): Promise<User>;
+    update(id: string, dto: UpdateUserDto): Promise<User>;
+    remove(id: string): Promise<void>;
+    handleError(error: Error): undefined;
 }
