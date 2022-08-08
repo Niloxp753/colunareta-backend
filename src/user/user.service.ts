@@ -14,11 +14,8 @@ export class UserService {
   private userSelect = {
     id: true,
     nome: true,
-    nome_usuario: true,
     email: true,
-    senha: false,
     cargo: true,
-    admin: true,
     createdAt: true,
     updatedAt: true,
   };
@@ -47,11 +44,6 @@ export class UserService {
   }
 
   async create(dto: CreateUserDto): Promise<User> {
-    if (dto.senha != dto.confirmaSenha) {
-      throw new BadRequestException('As senhas informadas não são iguais');
-    }
-
-    delete dto.confirmaSenha;
 
     const data: User = { ...dto };
 
@@ -60,12 +52,6 @@ export class UserService {
 
   async update(id: string, dto: UpdateUserDto): Promise<User> {
     await this.findById(id);
-
-    if (dto.senha != dto.confirmaSenha) {
-      throw new BadRequestException('As senhas informadas não são iguais');
-    }
-
-    delete dto.confirmaSenha;
 
     const data: Partial<User> = { ...dto };
 

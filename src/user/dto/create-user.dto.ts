@@ -11,13 +11,6 @@ export class CreateUserDto {
   nome: string;
 
   @IsString()
-  @ApiProperty({
-    description: 'Nome de usuário',
-    example: "AlexF"
-  })
-  nome_usuario: string;
-
-  @IsString()
   @Matches(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i,{
     message: "escreva um email valido"
   })
@@ -28,34 +21,9 @@ export class CreateUserDto {
   email: string
 
   @IsString()
-  @MinLength(8)
-  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-    message: 'Senha muito fraca',
-  })
-  @ApiProperty({
-    description: "Senha do usuário",
-    example: "Alex@123456"
-  })
-  senha: string
-
-  @ApiProperty({
-    description: 'Confirmação de senha deve ser igual',
-    example: 'Alex@123456',
-  })
-  confirmaSenha: string;
-
-  @IsString()
   @ApiProperty({
     description: "Cargo do usuário",
     example: "Médico"
   })
   cargo: string
-
-  @IsNumber()
-  @IsPositive()
-  @ApiProperty({
-    description: "Hierarquia do usuário dentro do sistema",
-    example: 1
-  })
-  admin: number
 }

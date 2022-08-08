@@ -24,14 +24,6 @@ __decorate([
 ], CreateUserDto.prototype, "nome", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, swagger_1.ApiProperty)({
-        description: 'Nome de usuário',
-        example: "AlexF"
-    }),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "nome_usuario", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
     (0, class_validator_1.Matches)(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i, {
         message: "escreva um email valido"
     }),
@@ -43,39 +35,11 @@ __decorate([
 ], CreateUserDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(8),
-    (0, class_validator_1.Matches)(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-        message: 'Senha muito fraca',
-    }),
-    (0, swagger_1.ApiProperty)({
-        description: "Senha do usuário",
-        example: "Alex@123456"
-    }),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "senha", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        description: 'Confirmação de senha deve ser igual',
-        example: 'Alex@123456',
-    }),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "confirmaSenha", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
     (0, swagger_1.ApiProperty)({
         description: "Cargo do usuário",
         example: "Médico"
     }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "cargo", void 0);
-__decorate([
-    (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.IsPositive)(),
-    (0, swagger_1.ApiProperty)({
-        description: "Hierarquia do usuário dentro do sistema",
-        example: 1
-    }),
-    __metadata("design:type", Number)
-], CreateUserDto.prototype, "admin", void 0);
 exports.CreateUserDto = CreateUserDto;
 //# sourceMappingURL=create-user.dto.js.map

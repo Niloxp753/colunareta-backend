@@ -18,11 +18,8 @@ let UserService = class UserService {
         this.userSelect = {
             id: true,
             nome: true,
-            nome_usuario: true,
             email: true,
-            senha: false,
             cargo: true,
-            admin: true,
             createdAt: true,
             updatedAt: true,
         };
@@ -46,19 +43,11 @@ let UserService = class UserService {
         return this.findById(id);
     }
     async create(dto) {
-        if (dto.senha != dto.confirmaSenha) {
-            throw new common_1.BadRequestException('As senhas informadas não são iguais');
-        }
-        delete dto.confirmaSenha;
         const data = Object.assign({}, dto);
         return this.prisma.user.create({ data });
     }
     async update(id, dto) {
         await this.findById(id);
-        if (dto.senha != dto.confirmaSenha) {
-            throw new common_1.BadRequestException('As senhas informadas não são iguais');
-        }
-        delete dto.confirmaSenha;
         const data = Object.assign({}, dto);
         return this.prisma.user
             .update({
