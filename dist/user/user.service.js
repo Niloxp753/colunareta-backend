@@ -15,21 +15,60 @@ const prisma_service_1 = require("../prisma/prisma.service");
 let UserService = class UserService {
     constructor(prisma) {
         this.prisma = prisma;
-    }
-    create(createUserDto) {
-        return 'This action adds a new user';
+        this.userSelect = {
+            id: true,
+            nome: true,
+            email: true,
+            cargo: true,
+            createdAt: true,
+            updatedAt: true,
+        };
     }
     findAll() {
-        return this.prisma.user.findMany();
+        return this.prisma.user.findMany({
+            select: this.userSelect,
+        });
     }
-    findOne(id) {
-        return `This action returns a #${id} user`;
+    async findById(id) {
+        const record = await this.prisma.user.findUnique({
+            where: { id },
+            select: this.userSelect,
+        });
+        if (!record) {
+            throw new common_1.NotFoundException(`Registro com o ID '${id}' não encontrado`);
+        }
+        return record;
     }
-    update(id, updateUserDto) {
-        return `This action updates a #${id} user`;
+    async findOne(id) {
+        return this.findById(id);
     }
-    remove(id) {
-        return `This action removes a #${id} user`;
+    async create(dto) {
+        const data = Object.assign({}, dto);
+        return this.prisma.user.create({ data });
+    }
+    async update(id, dto) {
+        await this.findById(id);
+        const data = Object.assign({}, dto);
+        return this.prisma.user
+            .update({
+            where: { id },
+            data,
+            select: this.userSelect,
+        })
+            .catch(this.handleError);
+    }
+    async remove(id) {
+        await this.findById(id);
+        await this.prisma.user.delete({ where: { id } });
+    }
+    handleError(error) {
+        var _a, _b;
+        const errorLines = (_a = error.message) === null || _a === void 0 ? void 0 : _a.split('\n');
+        const lastErrorLine = (_b = errorLines[errorLines.length - 1]) === null || _b === void 0 ? void 0 : _b.trim();
+        if (!lastErrorLine) {
+            console.error(error);
+        }
+        throw new common_1.UnprocessableEntityException(lastErrorLine || 'Algum erro ocorreu ao executar a operação');
     }
 };
 UserService = __decorate([

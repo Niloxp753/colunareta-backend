@@ -10,11 +10,8 @@ datasource db {
 model User {
   id           String @id @default(uuid())
   nome         String
-  nome_usuario String @unique
   email        String @unique
-  senha        String
   cargo        String
-  admin        Int
 
   instituicoes Institution[]
 

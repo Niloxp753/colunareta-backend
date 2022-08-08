@@ -29,17 +29,20 @@ let UserController = class UserController {
         return this.userService.findAll();
     }
     findOne(id) {
-        return this.userService.findOne(+id);
+        return this.userService.findOne(id);
     }
     update(id, updateUserDto) {
-        return this.userService.update(+id, updateUserDto);
+        return this.userService.update(id, updateUserDto);
     }
     remove(id) {
-        return this.userService.remove(+id);
+        return this.userService.remove(id);
     }
 };
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('create'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Cria um novo usuário'
+    }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
@@ -47,12 +50,18 @@ __decorate([
 ], UserController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)('find-all'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Visualiza todos os usuários'
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Localiza o usuário pelo ID'
+    }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -60,6 +69,9 @@ __decorate([
 ], UserController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(':id'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Atualiza o usuário pelo ID'
+    }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -68,6 +80,9 @@ __decorate([
 ], UserController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Deleta um usuário pelo ID'
+    }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

@@ -1,12 +1,16 @@
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './entities/user.entity';
 export declare class UserService {
     private readonly prisma;
+    private userSelect;
     constructor(prisma: PrismaService);
-    create(createUserDto: CreateUserDto): string;
-    findAll(): import(".prisma/client").PrismaPromise<import(".prisma/client").User[]>;
-    findOne(id: number): string;
-    update(id: number, updateUserDto: UpdateUserDto): string;
-    remove(id: number): string;
+    findAll(): Promise<User[]>;
+    findById(id: string): Promise<User>;
+    findOne(id: string): Promise<User>;
+    create(dto: CreateUserDto): Promise<User>;
+    update(id: string, dto: UpdateUserDto): Promise<User>;
+    remove(id: string): Promise<void>;
+    handleError(error: Error): undefined;
 }

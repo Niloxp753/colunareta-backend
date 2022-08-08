@@ -24,19 +24,22 @@ __decorate([
 ], CreateUserDto.prototype, "nome", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, swagger_1.ApiProperty)({
-        description: 'Nome de usuário',
-        example: "AlexF"
+    (0, class_validator_1.Matches)(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i, {
+        message: "escreva um email valido"
     }),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "nome_usuario", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
     (0, swagger_1.ApiProperty)({
         description: 'Email para cadastro',
         example: "alexcaras1@hotmail.com"
     }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "email", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, swagger_1.ApiProperty)({
+        description: "Cargo do usuário",
+        example: "Médico"
+    }),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "cargo", void 0);
 exports.CreateUserDto = CreateUserDto;
 //# sourceMappingURL=create-user.dto.js.map
