@@ -28,13 +28,13 @@ let InstitutionController = class InstitutionController {
         return this.institutionService.findAll();
     }
     findOne(id) {
-        return this.institutionService.findOne(+id);
+        return this.institutionService.findOne(id);
     }
     update(id, updateInstitutionDto) {
-        return this.institutionService.update(+id, updateInstitutionDto);
+        return this.institutionService.update(id, updateInstitutionDto);
     }
-    remove(id) {
-        return this.institutionService.remove(+id);
+    delete(id) {
+        return this.institutionService.delete(id);
     }
 };
 __decorate([
@@ -71,7 +71,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], InstitutionController.prototype, "remove", null);
+], InstitutionController.prototype, "delete", null);
 InstitutionController = __decorate([
     (0, common_1.Controller)('institution'),
     __metadata("design:paramtypes", [institution_service_1.InstitutionService])

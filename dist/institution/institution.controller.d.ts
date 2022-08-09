@@ -4,9 +4,9 @@ import { UpdateInstitutionDto } from './dto/update-institution.dto';
 export declare class InstitutionController {
     private readonly institutionService;
     constructor(institutionService: InstitutionService);
-    create(createInstitutionDto: CreateInstitutionDto): string;
+    create(createInstitutionDto: CreateInstitutionDto): Promise<import(".prisma/client").Institution>;
     findAll(): string;
     findOne(id: string): string;
     update(id: string, updateInstitutionDto: UpdateInstitutionDto): string;
-    remove(id: string): string;
+    delete(id: string): string;
 }
