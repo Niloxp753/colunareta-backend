@@ -9,7 +9,7 @@ export class InstitutionService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(dto: CreateInstitutionDto) {
-    if (dto.usuarios) {
+    if (dto.usuariosId) {
       return await this.prisma.institution
         .create({
           data: {
@@ -22,7 +22,7 @@ export class InstitutionService {
             estado: dto.estado,
             usuarios: {
               connect: {
-                id: dto.usuarios,
+                id: dto.usuariosId,
               },
             },
           },
