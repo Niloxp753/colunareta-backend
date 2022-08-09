@@ -31,6 +31,7 @@ model Institution {
   bairro     String
   cidade     String
   estado     String
+  complemento String
 
   usuarios User[]
   alunos   Studant[]
