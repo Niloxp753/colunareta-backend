@@ -78,4 +78,6 @@ export class CreateInstitutionDto {
     example: 'Instituição próxima ao campo São Bento',
   })
   complemento: string;
+
+  usuarios: string;
 }

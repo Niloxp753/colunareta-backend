@@ -8,4 +8,5 @@ export declare class CreateInstitutionDto {
     cidade: string;
     estado: string;
     complemento: string;
+    usuarios: string;
 }
