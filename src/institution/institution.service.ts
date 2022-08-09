@@ -20,6 +20,8 @@ export class InstitutionService {
             bairro: dto.bairro,
             cidade: dto.cidade,
             estado: dto.estado,
+            numero: dto.numero,
+            complemento: dto.complemento,
             usuarios: {
               connect: {
                 id: dto.usuariosId,

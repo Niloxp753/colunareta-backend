@@ -1,3 +1,4 @@
+
 export class Studant {
   id?: string;
   nome: string;
@@ -12,7 +13,9 @@ export class Studant {
   url_image?: string;
   consultas: string;
   agConsultas: string;
+
   instituicaoId: string;
+
   createdAt?: Date;
   updatedAt?: Date;
 }

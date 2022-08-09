@@ -64,7 +64,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  async remove(id: string) {
+  async delete(id: string) {
     await this.findById(id);
     await this.prisma.user.delete({ where: { id } });
   }
