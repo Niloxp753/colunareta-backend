@@ -14,7 +14,7 @@ export class Institution {
   complemento: string;
 
   usuarios: User[];
-  alunos: Studant[];
+  alunos?: Studant[];
 
   createdAt?: Date;
   updatedAt?: Date;

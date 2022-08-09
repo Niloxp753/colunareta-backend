@@ -26,4 +26,11 @@ export class CreateUserDto {
     example: "Admin"
   })
   cargo: string
+
+  @IsString()
+  @ApiProperty({
+    description: "Instituição do usuário",
+    example: 'instituição x'
+  })
+  instituicaoId: string
 }
