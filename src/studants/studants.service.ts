@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
-import { domainToASCII } from 'url';
 import { CreateStudantDto } from './dto/create-studant.dto';
 import { UpdateStudantDto } from './dto/update-studant.dto';
 import { Studant } from './entities/studant.entity';
