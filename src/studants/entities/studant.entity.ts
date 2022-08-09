@@ -13,4 +13,6 @@ export class Studant {
   consultas: string;
   agConsultas: string;
   instituicaoId: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
