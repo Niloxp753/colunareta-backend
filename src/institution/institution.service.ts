@@ -1,26 +1,63 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
 
 @Injectable()
 export class InstitutionService {
-  create(createInstitutionDto: CreateInstitutionDto) {
-    return 'This action adds a new institution';
+  constructor(private readonly prisma: PrismaService) {}
+
+  async create(dto: CreateInstitutionDto) {
+    if (dto.usuarios) {
+      return await this.prisma.institution
+        .create({
+          data: {
+            nome: dto.nome,
+            telefone: dto.telefone,
+            cep: dto.cep,
+            logradouro: dto.logradouro,
+            bairro: dto.bairro,
+            cidade: dto.cidade,
+            estado: dto.estado,
+            usuarios: {
+              connect: {
+                id: dto.usuarios,
+              },
+            },
+          },
+          include: {
+            usuarios: true,
+          },
+        })
+        .catch(handleError);
+    }
   }
 
   findAll() {
     return `This action returns all institution`;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} institution`;
   }
 
-  update(id: number, updateInstitutionDto: UpdateInstitutionDto) {
+  update(id: string, dto: UpdateInstitutionDto) {
     return `This action updates a #${id} institution`;
   }
 
-  remove(id: number) {
+  delete(id: string) {
     return `This action removes a #${id} institution`;
   }
+}
+
+export function handleError(error: Error): undefined {
+  const errorLines = error.message?.split('\n');
+  const lastErrorLine = errorLines[errorLines.length - 1]?.trim();
+
+  if (!lastErrorLine) {
+    console.error(error);
+  }
+  throw new UnprocessableEntityException(
+    lastErrorLine || 'Algum erro aconteceu ao executar a operação',
+  );
 }

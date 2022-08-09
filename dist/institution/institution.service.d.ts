@@ -1,9 +1,13 @@
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
 export declare class InstitutionService {
-    create(createInstitutionDto: CreateInstitutionDto): string;
+    private readonly prisma;
+    constructor(prisma: PrismaService);
+    create(dto: CreateInstitutionDto): Promise<import(".prisma/client").Institution>;
     findAll(): string;
-    findOne(id: number): string;
-    update(id: number, updateInstitutionDto: UpdateInstitutionDto): string;
-    remove(id: number): string;
+    findOne(id: string): string;
+    update(id: string, dto: UpdateInstitutionDto): string;
+    delete(id: string): string;
 }
+export declare function handleError(error: Error): undefined;
