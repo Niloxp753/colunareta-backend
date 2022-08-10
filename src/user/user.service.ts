@@ -19,6 +19,7 @@ export class UserService {
     cargo: true,
     createdAt: true,
     updatedAt: true,
+    senha: false,
   };
 
   constructor(private readonly prisma: PrismaService) {}
@@ -45,6 +46,13 @@ export class UserService {
   }
 
   async create(dto: CreateUserDto): Promise<User> {
+    if (dto.senha) {
+      if (dto.senha != dto.confirmaSenha) {
+        throw new BadRequestException('As senhas informadas não são iguais');
+      }
+    }
+
+    delete dto.confirmaSenha;
 
     const data: User = { ...dto };
 
@@ -53,6 +61,14 @@ export class UserService {
 
   async update(id: string, dto: UpdateUserDto): Promise<User> {
     await this.findById(id);
+
+    if (dto.senha) {
+      if (dto.senha != dto.confirmaSenha) {
+        throw new BadRequestException('As senhas informadas não são iguais');
+      }
+    }
+
+    delete dto.confirmaSenha;
 
     const data: Partial<User> = { ...dto };
 
