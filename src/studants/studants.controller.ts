@@ -5,7 +5,6 @@ import { UpdateStudantDto } from './dto/update-studant.dto';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('studants')
-@ApiBearerAuth()
 @Controller('studant')
 export class StudantsController {
   constructor(private readonly studantsService: StudantsService) {}
