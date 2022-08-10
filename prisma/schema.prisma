@@ -8,10 +8,11 @@ datasource db {
 }
 
 model User {
-  id           String @id @default(uuid())
-  nome         String
-  email        String @unique
-  cargo        String
+  id    String @id @default(uuid())
+  nome  String
+  email String @unique
+  cargo String
+  senha String
 
   instituicoes Institution[]
 
@@ -22,15 +23,15 @@ model User {
 }
 
 model Institution {
-  id         String @id @default(uuid())
-  nome       String @unique
-  telefone   String
-  cep        String
-  numero     String
-  logradouro String
-  bairro     String
-  cidade     String
-  estado     String
+  id          String @id @default(uuid())
+  nome        String @unique
+  telefone    String
+  cep         String
+  numero      String
+  logradouro  String
+  bairro      String
+  cidade      String
+  estado      String
   complemento String
 
   usuarios User[]
@@ -43,25 +44,29 @@ model Institution {
 }
 
 model Studant {
-  id          String @id @default(uuid())
-  nome        String @unique
-  idade       Int
-  telefone    String
-  cpf         String
-  cep         String
-  logradouro  String
-  bairro      String
-  cidade      String
-  estado      String
-  url_image   String
-  consultas   String
-  agConsultas String
+  id        String @id @default(uuid())
+  nome      String @unique
+  data_nasc String
+  telefone  String
 
   instituicao   Institution @relation(fields: [instituicaoId], references: [id])
   instituicaoId String
+
+  consultas Consult[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("studant")
+}
+
+model Consult {
+  id String @id @default(uuid())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  alunos Studant[]
+
+  @@map("consult")
 }
