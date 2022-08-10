@@ -22,17 +22,20 @@ export class StudantsService {
     consultas: true,
     agConsultas: true,
     instituicaoId: true,
-  }
+  };
 
   constructor(private readonly prisma: PrismaService) {}
 
   async create(dto: CreateStudantDto): Promise<Studant> {
     const data: Studant = {
       ...dto,
-    }
-    return await this.prisma.studant.create({
-      data,
-      select: this.studantsSelect }).catch(handleError);
+    };
+    return await this.prisma.studant
+      .create({
+        data,
+        select: this.studantsSelect,
+      })
+      .catch(handleError);
   }
 
   findAll(): Promise<Studant[]> {
@@ -55,13 +58,15 @@ export class StudantsService {
     await this.findById(id);
 
     const data: Partial<Studant> = {
-      ...dto
-    }
-    return this.prisma.studant.update({
-      where: { id },
-      data,
-      select: this.studantsSelect
-    }).catch(handleError);
+      ...dto,
+    };
+    return this.prisma.studant
+      .update({
+        where: { id },
+        data,
+        select: this.studantsSelect,
+      })
+      .catch(handleError);
   }
 
   async delete(id: string) {
