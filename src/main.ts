@@ -4,7 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {cors:true});
+  const app = await NestFactory.create(AppModule, { cors: true });
 
   app.useGlobalPipes(new ValidationPipe());
 
@@ -17,6 +17,7 @@ async function bootstrap() {
     .addTag('users')
     .addTag('studants')
     .addTag('institutions')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
