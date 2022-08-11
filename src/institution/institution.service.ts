@@ -103,15 +103,13 @@ export class InstitutionService {
           select: {
             id: true,
             nome: true,
-            idade: true,
-            telefone: true,
-            url_image: true,
-            cep: true,
-            cidade: true,
-            estado: true,
-            logradouro: true,
-            bairro: true,
-            consultas: true,
+            consultas: {
+              select: {
+                id: true,
+                agenda: true,
+                hora: true,
+              },
+            },
           },
         },
       },
