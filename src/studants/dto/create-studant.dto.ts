@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { IsString, IsUUID } from "class-validator";
 
 export class CreateStudantDto {
   @IsString()
@@ -36,11 +36,4 @@ export class CreateStudantDto {
     example: '....',
   })
   consultaId: string;
-
-  @IsString()
-  @ApiProperty({
-    description: 'Consultas agendadas para o aluno',
-    example: '[...]',
-  })
-  consultas: string[];
 }

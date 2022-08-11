@@ -1,4 +1,4 @@
-import { Consult } from "@prisma/client";
+import { Consult } from "src/consult/entities/consult.entity";
 
 export class Studant {
   id?: string;
@@ -6,8 +6,7 @@ export class Studant {
   data_nasc: string;
   telefone?: string;
   instituicaoId: string;
-  consultaId: string;
   createdAt?: Date;
   updatedAt?: Date;
-  consultas: Consult[];
+  consultas?: Consult[];
 }
