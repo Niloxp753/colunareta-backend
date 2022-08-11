@@ -2,7 +2,6 @@ import {
   BadRequestException,
   Injectable,
   NotFoundException,
-  UnprocessableEntityException,
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
@@ -25,16 +24,20 @@ export class UserService {
   constructor(private readonly prisma: PrismaService) {}
 
   findAll(): Promise<User[]> {
-    return this.prisma.user.findMany({
-      select: this.userSelect,
-    }).catch(handleError);;
+    return this.prisma.user
+      .findMany({
+        select: this.userSelect,
+      })
+      .catch(handleError);
   }
 
   async findById(id: string): Promise<User> {
-    const record = await this.prisma.user.findUnique({
-      where: { id },
-      select: this.userSelect,
-    }).catch(handleError);;
+    const record = await this.prisma.user
+      .findUnique({
+        where: { id },
+        select: this.userSelect,
+      })
+      .catch(handleError);
     if (!record) {
       throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
     }
@@ -42,7 +45,7 @@ export class UserService {
   }
 
   async findOne(id: string): Promise<User> {
-    return this.findById(id).catch(handleError);;
+    return this.findById(id).catch(handleError);
   }
 
   async create(dto: CreateUserDto): Promise<User> {
@@ -54,9 +57,15 @@ export class UserService {
 
     delete dto.confirmaSenha;
 
-    const data: User = { ...dto };
+    const data: User = {
+      nome: dto.nome,
+      email: dto.email,
+      senha: dto.senha,
+      cargo: dto.cargo,
+      instituicaoId: dto.instituicaoId,
+    };
 
-    return this.prisma.user.create({ data }).catch(handleError);;
+    return this.prisma.user.create({ data }).catch(handleError);
   }
 
   async update(id: string, dto: UpdateUserDto): Promise<User> {
@@ -83,6 +92,6 @@ export class UserService {
 
   async delete(id: string) {
     await this.findById(id);
-    await this.prisma.user.delete({ where: { id } }).catch(handleError);;
+    await this.prisma.user.delete({ where: { id } }).catch(handleError);
   }
 }
