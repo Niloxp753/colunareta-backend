@@ -1,4 +1,4 @@
-import { Consult } from "src/consult/entities/consult.entity";
+import { Consult } from 'src/consult/entities/consult.entity';
 
 export class Studant {
   id?: string;
