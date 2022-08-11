@@ -1,5 +1,4 @@
-import { Institution } from "src/institution/entities/institution.entity";
-
+import { Institution } from 'src/institution/entities/institution.entity';
 
 export class User {
   id?: string;
@@ -10,5 +9,5 @@ export class User {
   createdAt?: Date;
   updatedAt?: Date;
 
-  instituicoes?: Institution[]
+  instituicaoId?: Institution[];
 }
