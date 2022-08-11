@@ -79,5 +79,17 @@ export class CreateInstitutionDto {
   })
   complemento: string;
 
-  usuarios: string;
+  @IsString()
+  @ApiProperty({
+    description: '',
+    example: '36692efe-0aed-48a9-be57-d6735a4edad6',
+  })
+  usuariosId: string;
+
+  @IsString()
+  @ApiProperty({
+    description: 'Complemento onde fica a instituição',
+    example: 'Instituição próxima ao campo São Bento',
+  })
+  alunosId: string;
 }

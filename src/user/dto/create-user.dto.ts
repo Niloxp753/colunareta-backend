@@ -23,7 +23,31 @@ export class CreateUserDto {
   @IsString()
   @ApiProperty({
     description: "Cargo do usuário",
-    example: "Médico"
+    example: "Admin"
   })
   cargo: string
+
+  @IsString()
+  @ApiProperty({
+    description: "Instituição do usuário",
+    example: 'instituição x'
+  })
+  instituicaoId: string
+
+  @IsString()
+  @MinLength(6)
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message: 'Senha muito fraca',
+  })
+  @ApiProperty({
+    description: 'Senha do usuario',
+    example: 'Alex@123456',
+  })
+  senha: string;
+
+  @ApiProperty({
+    description: 'Confirmação de senha deve ser igual',
+    example: 'Alex@123456',
+  })
+  confirmaSenha: string;
 }

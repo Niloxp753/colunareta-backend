@@ -1,5 +1,4 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateStudantDto } from './dto/create-studant.dto';

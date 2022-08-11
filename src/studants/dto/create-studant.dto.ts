@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsUrl } from "class-validator";
+import { IsNumber, IsString, IsUrl } from "class-validator";
 import { StringifyOptions } from "querystring";
 
 export class CreateStudantDto {
@@ -10,10 +10,10 @@ export class CreateStudantDto {
   })
   nome: string;
 
-  @IsString()
+  @IsNumber()
   @ApiProperty({
     description: 'Idade do aluno',
-    example: '25',
+    example: 25,
   })
   idade: number;
 
@@ -90,7 +90,7 @@ export class CreateStudantDto {
   @IsString()
   @ApiProperty({
     description: 'Id da instituição onde o aluno estuda',
-    example: '...',
+    example: '074ac01e-ec6d-4277-b09f-bcdea2820a12',
   })
   instituicaoId: string;
 }

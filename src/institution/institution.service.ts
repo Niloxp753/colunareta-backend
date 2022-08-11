@@ -1,5 +1,6 @@
-import { Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { handleError } from 'src/utility/handle-error.utility';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
 
@@ -8,7 +9,7 @@ export class InstitutionService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(dto: CreateInstitutionDto) {
-    if (dto.usuarios) {
+    if (dto.usuariosId) {
       return await this.prisma.institution
         .create({
           data: {
@@ -19,9 +20,11 @@ export class InstitutionService {
             bairro: dto.bairro,
             cidade: dto.cidade,
             estado: dto.estado,
+            numero: dto.numero,
+            complemento: dto.complemento,
             usuarios: {
               connect: {
-                id: dto.usuarios,
+                id: dto.usuariosId,
               },
             },
           },
@@ -48,16 +51,4 @@ export class InstitutionService {
   delete(id: string) {
     return `This action removes a #${id} institution`;
   }
-}
-
-export function handleError(error: Error): undefined {
-  const errorLines = error.message?.split('\n');
-  const lastErrorLine = errorLines[errorLines.length - 1]?.trim();
-
-  if (!lastErrorLine) {
-    console.error(error);
-  }
-  throw new UnprocessableEntityException(
-    lastErrorLine || 'Algum erro aconteceu ao executar a operação',
-  );
 }

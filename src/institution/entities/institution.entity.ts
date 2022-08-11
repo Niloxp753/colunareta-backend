@@ -1,3 +1,4 @@
+import { Studant } from 'src/studants/entities/studant.entity';
 import { User } from 'src/user/entities/user.entity';
 
 export class Institution {
@@ -13,7 +14,7 @@ export class Institution {
   complemento: string;
 
   usuarios: User[];
-  // alunos: Studant[];
+  alunos?: Studant[];
 
   createdAt?: Date;
   updatedAt?: Date;
