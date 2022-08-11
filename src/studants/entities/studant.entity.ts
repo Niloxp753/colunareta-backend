@@ -2,20 +2,10 @@
 export class Studant {
   id?: string;
   nome: string;
-  idade: number;
+  data_nasc: string;
   telefone?: string;
-  cpf: string;
-  cep: string;
-  logradouro: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
-  url_image?: string;
-  consultas: string;
-  agConsultas: string;
-
   instituicaoId: string;
-
   createdAt?: Date;
   updatedAt?: Date;
+  consultas: Consult[];
 }
