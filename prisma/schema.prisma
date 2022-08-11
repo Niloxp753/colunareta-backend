@@ -63,7 +63,7 @@ model Studant {
 model Consult {
   id String @id @default(uuid())
 
-  date String
+  agenda String
   hora String
 
   createdAt DateTime @default(now())
