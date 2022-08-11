@@ -1,3 +1,4 @@
+import { Consult } from "@prisma/client";
 
 export class Studant {
   id?: string;
@@ -5,6 +6,7 @@ export class Studant {
   data_nasc: string;
   telefone?: string;
   instituicaoId: string;
+  consultaId: string;
   createdAt?: Date;
   updatedAt?: Date;
   consultas: Consult[];

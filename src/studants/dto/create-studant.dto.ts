@@ -32,8 +32,15 @@ export class CreateStudantDto {
 
   @IsString()
   @ApiProperty({
+    description: 'Id da consulta do aluno',
+    example: '....',
+  })
+  consultaId: string;
+
+  @IsString()
+  @ApiProperty({
     description: 'Consultas agendadas para o aluno',
-    example: '...',
+    example: '[...]',
   })
   consultas: string[];
 }

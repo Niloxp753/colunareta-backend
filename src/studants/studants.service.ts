@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateStudantDto } from './dto/create-studant.dto';
@@ -10,24 +11,16 @@ export class StudantsService {
   private studantsSelect = {
     id: true,
     nome: true,
-    idade: true,
+    data_nasc: true,
     telefone: true,
-    cpf: true,
-    cep: true,
-    logradouro: true,
-    bairro: true,
-    cidade: true,
-    estado: true,
-    url_image: true,
     consultas: true,
-    agConsultas: true,
     instituicaoId: true,
   }
 
   constructor(private readonly prisma: PrismaService) {}
 
   async create(dto: CreateStudantDto): Promise<Studant> {
-    const data: Studant = {
+    const data: Prisma.StudantCreateInput = {
       ...dto,
     }
     return await this.prisma.studant.create({
