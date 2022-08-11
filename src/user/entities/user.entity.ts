@@ -1,4 +1,5 @@
-import { Institution } from "@prisma/client";
+import { Institution } from "src/institution/entities/institution.entity";
+
 
 export class User {
   id?: string;
