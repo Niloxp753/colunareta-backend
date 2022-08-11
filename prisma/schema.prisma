@@ -14,7 +14,7 @@ model User {
   cargo String
   senha String
 
-  instituicoes Institution[]
+  instituicaoId Institution[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
