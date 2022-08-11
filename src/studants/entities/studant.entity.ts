@@ -1,3 +1,4 @@
+import { Consult } from "src/consult/entities/consult.entity";
 
 export class Studant {
   id?: string;
@@ -7,5 +8,5 @@ export class Studant {
   instituicaoId: string;
   createdAt?: Date;
   updatedAt?: Date;
-  consultas: Consult[];
+  consultas?: Consult[];
 }

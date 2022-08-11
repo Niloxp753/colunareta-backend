@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateStudantDto } from './dto/create-studant.dto';
@@ -10,17 +11,9 @@ export class StudantsService {
   private studantsSelect = {
     id: true,
     nome: true,
-    idade: true,
+    data_nasc: true,
     telefone: true,
-    cpf: true,
-    cep: true,
-    logradouro: true,
-    bairro: true,
-    cidade: true,
-    estado: true,
-    url_image: true,
     consultas: true,
-    agConsultas: true,
     instituicaoId: true,
   };
 
@@ -39,11 +32,14 @@ export class StudantsService {
   }
 
   findAll(): Promise<Studant[]> {
-    return this.prisma.studant.findMany();
+    return this.prisma.studant.findMany({
+      select: this.studantsSelect,
+    }).catch(handleError);;
   }
 
   async findById(id: string): Promise<Studant> {
-    const record = await this.prisma.studant.findUnique({ where: { id } });
+    const record = await this.prisma.studant.findUnique({ where: { id },
+    select: this.studantsSelect, });
     if (!record) {
       throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
     }
@@ -58,6 +54,7 @@ export class StudantsService {
     await this.findById(id);
 
     const data: Partial<Studant> = {
+<<<<<<< HEAD
       ...dto,
     };
     return this.prisma.studant
@@ -67,6 +64,15 @@ export class StudantsService {
         select: this.studantsSelect,
       })
       .catch(handleError);
+=======
+      ...dto
+    };
+    return this.prisma.studant.update({
+      where: { id },
+      data,
+      select: this.studantsSelect,
+    }).catch(handleError);
+>>>>>>> e6a0d38081d0a2c3b6201c4255ea96a0de8173ae
   }
 
   async delete(id: string) {
