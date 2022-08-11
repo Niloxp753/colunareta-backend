@@ -34,7 +34,7 @@ export class StudantsService {
   findAll(): Promise<Studant[]> {
     return this.prisma.studant.findMany({
       select: this.studantsSelect,
-    }).catch(handleError);;
+    }).catch(handleError);
   }
 
   async findById(id: string): Promise<Studant> {
