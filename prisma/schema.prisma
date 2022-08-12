@@ -14,8 +14,6 @@ model User {
   cargo String
   senha String
 
-  instituicaoId Institution[]
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -34,7 +32,6 @@ model Institution {
   estado      String
   complemento String
 
-  usuarios User[]
   alunos   Studant[]
 
   createdAt DateTime @default(now())
@@ -69,7 +66,8 @@ model Consult {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  alunos Studant[]
+  alunos Studant @relation(fields: [alunoId], references: [id])
+  alunoId String
 
   @@map("consult")
 }

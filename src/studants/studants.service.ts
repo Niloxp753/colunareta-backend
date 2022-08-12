@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
-import { CreateStudantDto } from './dto/create-studant.dto';
+// import { CreateStudantDto } from './dto/create-studant.dto';
 import { UpdateStudantDto } from './dto/update-studant.dto';
 import { Studant } from './entities/studant.entity';
 
@@ -18,17 +18,17 @@ export class StudantsService {
 
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(dto: CreateStudantDto): Promise<Studant> {
-    const data: Studant = {
-      ...dto,
-    };
-    return await this.prisma.studant
-      .create({
-        data,
-        select: this.studantsSelect,
-      })
-      .catch(handleError);
-  }
+  // async create(dto: CreateStudantDto): Promise<Studant> {
+  //   const data: Studant = {
+  //     ...dto,
+  //   };
+  //   return await this.prisma.studant
+  //     .create({
+  //       data,
+  //       select: this.studantsSelect,
+  //     })
+  //     .catch(handleError);
+  // }
 
   findAll(): Promise<Studant[]> {
     return this.prisma.studant
@@ -53,20 +53,20 @@ export class StudantsService {
     return this.findById(id);
   }
 
-  async update(id: string, dto: UpdateStudantDto): Promise<Studant> {
-    await this.findById(id);
+  // async update(id: string, dto: UpdateStudantDto): Promise<Studant> {
+  //   await this.findById(id);
 
-    const data: Partial<Studant> = {
-      ...dto,
-    };
-    return this.prisma.studant
-      .update({
-        where: { id },
-        data,
-        select: this.studantsSelect,
-      })
-      .catch(handleError);
-  }
+  //   const data: Partial<Studant> = {
+  //     ...dto,
+  //   };
+  //   return this.prisma.studant
+  //     .update({
+  //       where: { id },
+  //       data,
+  //       select: this.studantsSelect,
+  //     })
+  //     .catch(handleError);
+  // }
 
   async delete(id: string) {
     await this.findById(id);

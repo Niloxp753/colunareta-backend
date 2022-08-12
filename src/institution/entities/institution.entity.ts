@@ -1,5 +1,4 @@
 import { Studant } from 'src/studants/entities/studant.entity';
-import { User } from 'src/user/entities/user.entity';
 
 export class Institution {
   id: string;
@@ -12,10 +11,5 @@ export class Institution {
   cidade: string;
   estado: string;
   complemento: string;
-
-  usuarios: User[];
   alunos?: Studant[];
-
-  createdAt?: Date;
-  updatedAt?: Date;
 }

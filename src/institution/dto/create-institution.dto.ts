@@ -1,7 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString, Matches } from 'class-validator';
+import { Studant } from 'src/studants/entities/studant.entity';
+import { Institution } from '../entities/institution.entity';
 
-export class CreateInstitutionDto {
+export class CreateInstitutionDto implements Institution {
+  id: string;
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
@@ -79,17 +82,10 @@ export class CreateInstitutionDto {
   })
   complemento: string;
 
-  @IsString()
-  @ApiProperty({
-    description: '',
-    example: '36692efe-0aed-48a9-be57-d6735a4edad6',
-  })
-  usuariosId: string;
-
-  @IsString()
+  // @IsString()
   @ApiProperty({
     description: 'Complemento onde fica a instituição',
     example: 'Instituição próxima ao campo São Bento',
   })
-  alunosId: string;
+  alunos?: Studant[];
 }
