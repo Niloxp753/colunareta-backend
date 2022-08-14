@@ -2,14 +2,14 @@ import { Studant } from 'src/studants/entities/studant.entity';
 
 export class Institution {
   id: string;
-  nome: string;
-  telefone: string;
+  name: string;
+  phone: string;
   cep: string;
-  numero: string;
-  logradouro: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
-  complemento: string;
-  alunos?: Studant[];
+  adressNumber: string;
+  street: string;
+  district: string;
+  city: string;
+  state: string;
+  complement: string;
+  students?: Studant[];
 }

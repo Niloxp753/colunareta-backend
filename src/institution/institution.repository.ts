@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { Institution } from './entities/institution.entity';
-import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class InstitutionRepository {
@@ -16,5 +15,25 @@ export class InstitutionRepository {
     // return PrismaInst
   }
 
-  
+  // async updateInstitution(data: Institution): Promise<Bill | undefined> {
+  //   let updatedBill: Bill | undefined = undefined;
+  //   let billIndex = 0;
+
+  //   this.bills.map((bill, index) => {
+  //     updatedBill = bill;
+  //     if (bill.id === billUpdate.id) {
+  //       billIndex = index;
+  //       if (billUpdate.title)
+  //         updatedBill = { ...updatedBill, title: billUpdate.title };
+
+  //       if (billUpdate.total)
+  //         updatedBill = { ...updatedBill, total: billUpdate.total };
+  //       if (billUpdate.isPaid)
+  //         updatedBill = { ...updatedBill, isPaid: billUpdate.isPaid };
+
+  //       this.bills.splice(index, 1, updatedBill);
+  //     }
+  //   });
+  //   return Promise.resolve(this.bills[billIndex]);
+  // }
 }
