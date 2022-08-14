@@ -1,22 +1,8 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  HttpCode,
-  HttpStatus,
-  UseGuards,
-} from '@nestjs/common';
-import { InstitutionService } from './institution.service';
+import { Body, Controller, Post } from '@nestjs/common';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
+import { InstitutionService } from './institution.service';
 // import { UpdateInstitutionDto } from './dto/update-institution.dto';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { User } from 'src/user/entities/user.entity';
-import { LoggedUser } from 'src/auth/logged-user.decorator';
-import { AuthGuard } from '@nestjs/passport';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('institutions')
 @Controller('institutions')
@@ -24,16 +10,11 @@ export class InstitutionController {
   constructor(private readonly institutionService: InstitutionService) {}
 
   @Post()
-  // @UseGuards(AuthGuard('jwt'))
-  // @ApiBearerAuth()
   @ApiOperation({
     summary: 'Cria uma nova instituição',
   })
-  create(
-    // @LoggedUser() user: User,
-    @Body() createInstitutionDto: CreateInstitutionDto,
-  ) {
-    return this.institutionService.create('', createInstitutionDto);
+  create(@Body() createInstitutionDto: CreateInstitutionDto) {
+    return this.institutionService.create(createInstitutionDto);
   }
 
   // @Get()
@@ -53,13 +34,10 @@ export class InstitutionController {
   // }
 
   // @Patch(':id')
-  // @UseGuards(AuthGuard('jwt'))
-  // @ApiBearerAuth()
   // @ApiOperation({
   //   summary: 'Atualiza uma instituição pelo ID',
   // })
   // update(
-  //   @LoggedUser() user: User,
   //   @Param('id') id: string,
   //   @Body() updateInstitutionDto: UpdateInstitutionDto,
   // ) {
@@ -67,8 +45,6 @@ export class InstitutionController {
   // }
 
   // @Delete(':id')
-  // @UseGuards(AuthGuard('jwt'))
-  // @ApiBearerAuth()
   // @HttpCode(HttpStatus.NO_CONTENT)
   // @ApiOperation({
   //   summary: 'Deleta uma instituição pelo ID',

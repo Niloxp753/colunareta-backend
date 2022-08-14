@@ -5,6 +5,7 @@ import { Institution } from '../entities/institution.entity';
 
 export class CreateInstitutionDto implements Institution {
   id: string;
+
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
