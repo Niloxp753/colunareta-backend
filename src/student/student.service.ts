@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { handleError } from 'src/utility/handle-error.utility';
 import { Student } from './entities/student.entity';
 import { StudentRepository } from './student.repository';
@@ -12,13 +12,14 @@ export class StudentsService {
     return await this.repository.createStudent(dto).catch(handleError);
   }
 
-  // findAll(): Promise<Student[]> {
-  //   return this.prisma.Student
-  //     .findMany({
-  //       select: this.StudentsSelect,
-  //     })
-  //     .catch(handleError);
-  // }
+  async findAll(): Promise<Student[]> {
+    const studentExist = await this.repository.findAllStudent();
+
+    if (studentExist.length <= 0) {
+      throw new BadRequestException('Nenhum aluno cadastrado');
+    }
+    return await this.repository.findAllStudent();
+  }
 
   // async findById(id: string): Promise<Student> {
   //   const record = await this.prisma.Student.findUnique({

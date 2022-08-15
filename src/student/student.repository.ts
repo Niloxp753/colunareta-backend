@@ -18,4 +18,18 @@ export class StudentRepository {
     });
     return PrismaInst;
   }
+
+  async findAllStudent(): Promise<Student[]> {
+    const studentList = await this.prisma.student.findMany({
+      select: {
+        id: true,
+        name: true,
+        age: true,
+        phone: true,
+        institutionId: true,
+        consult: true,
+      },
+    });
+    return studentList;
+  }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { StudentsService } from './student.service';
 // import { CreateStudantDto } from './dto/create-studant.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -17,13 +17,13 @@ export class StudantsController {
     return this.studantsService.create(createStudentDto);
   }
 
-  // @Get()
-  // @ApiOperation({
-  //   summary: 'Vizualizar todos os alunos cadastrados',
-  // })
-  // findAll() {
-  //   return this.studantsService.findAll();
-  // }
+  @Get('find-all')
+  @ApiOperation({
+    summary: 'Lista todos os alunos cadastrados',
+  })
+  findAll() {
+    return this.studantsService.findAll();
+  }
 
   // @Get(':id')
   // @ApiOperation({
