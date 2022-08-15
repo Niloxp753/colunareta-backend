@@ -8,11 +8,11 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(uuid())
-  nome  String
-  email String @unique
-  cargo String
-  senha String
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  role     String
+  password String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -21,18 +21,18 @@ model User {
 }
 
 model Institution {
-  id          String @id @default(uuid())
-  name        String @unique
-  phone    String
-  cep         String
-  adressNumber  String
-  street      String
-  district      String
-  city      String
-  state      String
-  complement String
+  id           String @id @default(uuid())
+  name         String @unique
+  phone        String
+  cep          String
+  adressNumber String
+  street       String
+  district     String
+  city         String
+  state        String
+  complement   String
 
-  students   Studant[]
+  students Studant[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -41,15 +41,15 @@ model Institution {
 }
 
 model Studant {
-  id        String @id @default(uuid())
-  nome      String @unique
-  data_nasc String
-  telefone  String
+  id    String @id @default(uuid())
+  name  String @unique
+  age   String
+  phone String
 
-  instituicao   Institution @relation(fields: [instituicaoId], references: [id])
-  instituicaoId String
+  institution   Institution @relation(fields: [institutionId], references: [id])
+  institutionId String
 
-  consultas Consult[]
+  consult Consult[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -60,14 +60,14 @@ model Studant {
 model Consult {
   id String @id @default(uuid())
 
-  agenda String
-  hora String
+  schedule String
+  hour     String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  alunos Studant @relation(fields: [alunoId], references: [id])
-  alunoId String
+  studants  Studant @relation(fields: [studantId], references: [id])
+  studantId String
 
   @@map("consult")
 }
