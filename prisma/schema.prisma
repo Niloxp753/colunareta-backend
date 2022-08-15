@@ -22,17 +22,17 @@ model User {
 
 model Institution {
   id          String @id @default(uuid())
-  nome        String @unique
-  telefone    String
+  name        String @unique
+  phone    String
   cep         String
-  numero      String
-  logradouro  String
-  bairro      String
-  cidade      String
-  estado      String
-  complemento String
+  adressNumber  String
+  street      String
+  district      String
+  city      String
+  state      String
+  complement String
 
-  alunos   Studant[]
+  students   Studant[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

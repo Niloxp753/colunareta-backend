@@ -10,6 +10,6 @@ export class Institution {
   district: string;
   city: string;
   state: string;
-  complement: string;
+  complement?: string;
   students?: Studant[];
 }

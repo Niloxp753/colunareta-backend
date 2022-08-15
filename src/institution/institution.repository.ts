@@ -1,39 +1,91 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { UpdateInstitutionDto } from './dto/update-institution.dto';
 import { Institution } from './entities/institution.entity';
 
 @Injectable()
 export class InstitutionRepository {
-  institutions: Institution[] = [];
-  users: string[];
-  // constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
+
   async createInstitution(data: Institution): Promise<Institution> {
-    // const PrismaInst = await this.prisma.institution.create({
-    //   data,
-    // });
-    this.institutions.push(data);
-    return data;
-    // return PrismaInst
+    const PrismaInst = await this.prisma.institution.create({
+      data: {
+        id: data.id,
+        name: data.name,
+        cep: data.cep,
+        phone: data.phone,
+        street: data.street,
+        adressNumber: data.street,
+        district: data.district,
+        city: data.city,
+        state: data.state,
+        complement: data.complement,
+      },
+    });
+    return PrismaInst;
   }
 
-  // async updateInstitution(data: Institution): Promise<Bill | undefined> {
-  //   let updatedBill: Bill | undefined = undefined;
-  //   let billIndex = 0;
-
-  //   this.bills.map((bill, index) => {
-  //     updatedBill = bill;
-  //     if (bill.id === billUpdate.id) {
-  //       billIndex = index;
-  //       if (billUpdate.title)
-  //         updatedBill = { ...updatedBill, title: billUpdate.title };
-
-  //       if (billUpdate.total)
-  //         updatedBill = { ...updatedBill, total: billUpdate.total };
-  //       if (billUpdate.isPaid)
-  //         updatedBill = { ...updatedBill, isPaid: billUpdate.isPaid };
-
-  //       this.bills.splice(index, 1, updatedBill);
-  //     }
-  //   });
-  //   return Promise.resolve(this.bills[billIndex]);
+  // async findBillsByUser(userId: string): Promise<Bill[]> {
+  //   return await this.prisma.bill.findMany({ where: { userId } });
   // }
+
+  async findById(id: string): Promise<Institution> {
+    const record = await this.prisma.institution.findUnique({
+      where: { id },
+      include: {
+        students: true,
+      },
+    });
+
+    if (!record) {
+      throw new NotFoundException(`Registro com o ID '${id}' não encontrado.`);
+    }
+
+    return record;
+  }
+
+  async findOne(id: string) {
+    await this.findById(id);
+
+    return await this.prisma.institution.findUnique({
+      where: { id },
+      select: {
+        name: true,
+        phone: true,
+        cep: true,
+        city: true,
+        state: true,
+        street: true,
+        district: true,
+        adressNumber: true,
+        complement: true,
+        students: {
+          select: {
+            id: true,
+            nome: true,
+            consultas: {
+              select: {
+                id: true,
+                agenda: true,
+                hora: true,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // async deleteBillById(billId: string): Promise<Bill> {
+  //   return await this.prisma.bill.delete({ where: { id: billId } });
+  // }
+
+  async updateInstitution(data: UpdateInstitutionDto): Promise<Institution> {
+    return await this.prisma.institution.update({
+      where: {
+        id: data.id,
+      },
+      data,
+    });
+  }
 }

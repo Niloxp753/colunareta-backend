@@ -14,6 +14,12 @@ export class InstitutionService {
   async create(dto: CreateInstitutionDto): Promise<Institution> {
     return await this.repository.createInstitution(dto);
   }
+  // async update(
+  //   id: UpdateInstitutionDto,
+  //   updateInstitutionDto: UpdateInstitutionDto,
+  // ) {
+  //   return await this.repository.updateInstitution(id, updateInstitutionDto);
+  // }
 
   //   async findAll(user: User) {
   //     const institutionList = await this.prisma.institution.findMany({
