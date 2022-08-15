@@ -4,8 +4,8 @@ import { StudentsService } from './student.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateStudentDto } from './dto/create-student.dto';
 
-@ApiTags('studants')
-@Controller('studant')
+@ApiTags('students')
+@Controller('student')
 export class StudantsController {
   constructor(private readonly studantsService: StudentsService) {}
 

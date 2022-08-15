@@ -1,4 +1,4 @@
-import { Student } from 'src/studants/entities/student.entity';
+import { Student } from 'src/student/entities/student.entity';
 
 export class Institution {
   id: string;

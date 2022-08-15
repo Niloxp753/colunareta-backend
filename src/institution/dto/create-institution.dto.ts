@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString, Matches } from 'class-validator';
-import { Student } from 'src/studants/entities/student.entity';
+import { Student } from 'src/student/entities/student.entity';
 import { Institution } from '../entities/institution.entity';
 
 export class CreateInstitutionDto implements Institution {
