@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { InstitutionService } from './institution.service';
 // import { UpdateInstitutionDto } from './dto/update-institution.dto';
@@ -17,13 +17,13 @@ export class InstitutionController {
     return this.institutionService.create(createInstitutionDto);
   }
 
-  // @Get()
-  // @ApiOperation({
-  //   summary: 'Lista todas as instituições',
-  // })
-  // findAll(@LoggedUser() user: User) {
-  //   return this.institutionService.findAll(user);
-  // }
+  @Get()
+  @ApiOperation({
+    summary: 'Lista todas as instituições',
+  })
+  findAll() {
+    return this.institutionService.findAll();
+  }
 
   // @Get(':id')
   // @ApiOperation({

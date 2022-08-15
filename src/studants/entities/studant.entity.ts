@@ -2,9 +2,9 @@ import { Consult } from 'src/consult/entities/consult.entity';
 
 export class Studant {
   id: string;
-  nome: string;
-  data_nasc: string;
-  telefone?: string;
-  instituicaoId: string;
-  consultas?: Consult[];
+  name: string;
+  age: string;
+  phone?: string;
+  institutionId: string;
+  consult?: Consult[];
 }

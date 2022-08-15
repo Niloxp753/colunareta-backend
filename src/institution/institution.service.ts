@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 // import { PrismaService } from 'src/prisma/prisma.service';
 // import { User } from 'src/user/entities/user.entity';
 // import { handleError } from 'src/utility/handle-error.utility';
@@ -14,6 +14,16 @@ export class InstitutionService {
   async create(dto: CreateInstitutionDto): Promise<Institution> {
     return await this.repository.createInstitution(dto);
   }
+
+  async findAll(): Promise<Institution[]> {
+    const institutionExist = await this.repository.findAllInstitution();
+
+    if (!institutionExist) {
+      throw new BadRequestException('Nenhuma instituição cadastrada');
+    }
+    return await this.repository.findAllInstitution();
+  }
+
   // async update(updateInstitutionDto: UpdateInstitutionDto) {
   //   return await this.repository.updateInstitution(updateInstitutionDto);
   // }

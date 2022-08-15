@@ -24,6 +24,25 @@ export class InstitutionRepository {
     return PrismaInst;
   }
 
+  async findAllInstitution(): Promise<Institution[]> {
+    const institutionList = await this.prisma.institution.findMany({
+      select: {
+        id: true,
+        name: true,
+        phone: true,
+        cep: true,
+        street: true,
+        district: true,
+        city: true,
+        state: true,
+        adressNumber: true,
+        complement: true,
+        students: true,
+      },
+    });
+    return institutionList;
+  }
+
   // async findById(id: string): Promise<Institution> {
   //   const record = await this.prisma.institution.findUnique({
   //     where: { id },
