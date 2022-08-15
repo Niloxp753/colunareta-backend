@@ -33,7 +33,7 @@ model Institution {
   state        String
   complement   String
 
-  students Studant[]
+  students Student[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -41,7 +41,7 @@ model Institution {
   @@map("institution")
 }
 
-model Studant {
+model Student {
   id    String @id @default(uuid())
   name  String @unique
   age   String
@@ -67,8 +67,8 @@ model Consult {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  studants  Studant @relation(fields: [studantId], references: [id])
-  studantId String
+  students  Student @relation(fields: [studentId], references: [id])
+  studentId String
 
   @@map("consult")
 }

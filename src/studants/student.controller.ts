@@ -1,20 +1,21 @@
-import { Controller } from '@nestjs/common';
-import { StudantsService } from './studants.service';
+import { Body, Controller, Post } from '@nestjs/common';
+import { StudentsService } from './student.service';
 // import { CreateStudantDto } from './dto/create-studant.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CreateStudentDto } from './dto/create-student.dto';
 
 @ApiTags('studants')
 @Controller('studant')
 export class StudantsController {
-  constructor(private readonly studantsService: StudantsService) {}
+  constructor(private readonly studantsService: StudentsService) {}
 
-  // @Post()
-  // @ApiOperation({
-  //   summary: 'Cadastrar um aluno',
-  // })
-  // create(@Body() createStudantDto: CreateStudantDto) {
-  //   return this.studantsService.create(createStudantDto);
-  // }
+  @Post()
+  @ApiOperation({
+    summary: 'Cadastrar um aluno',
+  })
+  create(@Body() createStudentDto: CreateStudentDto) {
+    return this.studantsService.create(createStudentDto);
+  }
 
   // @Get()
   // @ApiOperation({

@@ -1,4 +1,4 @@
-import { Studant } from 'src/studants/entities/studant.entity';
+import { Student } from 'src/studants/entities/student.entity';
 
 export class Institution {
   id: string;
@@ -11,5 +11,5 @@ export class Institution {
   city: string;
   state: string;
   complement?: string;
-  students?: Studant[];
+  students?: Student[];
 }

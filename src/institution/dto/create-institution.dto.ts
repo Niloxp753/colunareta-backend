@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString, Matches } from 'class-validator';
-import { Studant } from 'src/studants/entities/studant.entity';
+import { Student } from 'src/studants/entities/student.entity';
 import { Institution } from '../entities/institution.entity';
 
 export class CreateInstitutionDto implements Institution {
@@ -88,5 +88,5 @@ export class CreateInstitutionDto implements Institution {
     description: 'Alunos da Instituição cadastrada',
     example: 'Thiago Ventura',
   })
-  students?: Studant[];
+  students?: Student[];
 }

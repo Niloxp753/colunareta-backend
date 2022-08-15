@@ -1,39 +1,38 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsUUID } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString } from 'class-validator';
+import { Consult } from 'src/consult/entities/consult.entity';
+import { Student } from '../entities/student.entity';
 
-export class CreateStudantDto {
+export class CreateStudentDto implements Student {
+  id?: string;
+
   @IsString()
   @ApiProperty({
     description: 'Nome do aluno',
     example: 'Alex Faria',
   })
-  nome: string;
+  name: string;
 
   @IsString()
   @ApiProperty({
     description: 'Idade do aluno',
     example: 25,
   })
-  data_nasc: string;
+  age: string;
 
   @IsString()
   @ApiProperty({
     description: 'Telefone de contato do aluno',
     example: '62921212121',
   })
-  telefone?: string;
+  phone?: string;
 
   @IsString()
   @ApiProperty({
     description: 'Id da instituição onde o aluno estuda',
     example: '074ac01e-ec6d-4277-b09f-bcdea2820a12',
   })
-  instituicaoId: string;
+  institutionId: string;
 
-  @IsString()
-  @ApiProperty({
-    description: 'Id da consulta do aluno',
-    example: '....',
-  })
-  consultaId: string;
+  consult?: Consult[];
 }
