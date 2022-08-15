@@ -17,7 +17,7 @@ export class InstitutionController {
     return this.institutionService.create(createInstitutionDto);
   }
 
-  @Get()
+  @Get('find-all')
   @ApiOperation({
     summary: 'Lista todas as instituições',
   })
