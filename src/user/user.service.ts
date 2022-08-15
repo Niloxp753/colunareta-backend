@@ -26,8 +26,8 @@ export class UserService {
   async findAll(): Promise<User[]> {
     const userExist = await this.repository.findAllUser();
 
-    if (!userExist) {
-      throw new BadRequestException('Não existe usuário cadastrado');
+    if (userExist.length < 0) {
+      throw new BadRequestException('Nenhum usuário cadastrado');
     }
     return await this.repository.findAllUser();
   }

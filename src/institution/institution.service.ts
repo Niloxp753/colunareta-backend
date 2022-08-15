@@ -18,7 +18,7 @@ export class InstitutionService {
   async findAll(): Promise<Institution[]> {
     const institutionExist = await this.repository.findAllInstitution();
 
-    if (!institutionExist) {
+    if (institutionExist.length <= 0) {
       throw new BadRequestException('Nenhuma instituição cadastrada');
     }
     return await this.repository.findAllInstitution();
