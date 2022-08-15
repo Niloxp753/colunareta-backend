@@ -1,8 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UserService } from './user.service';
 
 @ApiTags('users')
 @Controller('users')
@@ -11,7 +10,7 @@ export class UserController {
 
   @Post('create')
   @ApiOperation({
-    summary: 'Cria um novo usuário'
+    summary: 'Cria um novo usuário',
   })
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
@@ -19,33 +18,33 @@ export class UserController {
 
   @Get('find-all')
   @ApiOperation({
-    summary: 'Visualiza todos os usuários'
+    summary: 'Visualiza todos os usuários',
   })
   findAll() {
     return this.userService.findAll();
   }
 
-  @Get(':id')
-  @ApiOperation({
-    summary: 'Localiza o usuário pelo ID'
-  })
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(id);
-  }
+  // @Get(':id')
+  // @ApiOperation({
+  //   summary: 'Localiza o usuário pelo ID',
+  // })
+  // findOne(@Param('id') id: string) {
+  //   return this.userService.findOne(id);
+  // }
 
-  @Patch(':id')
-  @ApiOperation({
-    summary: 'Atualiza o usuário pelo ID'
-  })
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(id, updateUserDto);
-  }
+  // @Patch(':id')
+  // @ApiOperation({
+  //   summary: 'Atualiza o usuário pelo ID',
+  // })
+  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  //   return this.userService.update(id, updateUserDto);
+  // }
 
-  @Delete(':id')
-  @ApiOperation({
-    summary: 'Deleta um usuário pelo ID'
-  })
-  delete(@Param('id') id: string) {
-    return this.userService.delete(id);
-  }
+  // @Delete(':id')
+  // @ApiOperation({
+  //   summary: 'Deleta um usuário pelo ID',
+  // })
+  // delete(@Param('id') id: string) {
+  //   return this.userService.delete(id);
+  // }
 }

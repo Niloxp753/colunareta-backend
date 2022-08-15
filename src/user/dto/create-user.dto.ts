@@ -1,13 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, Matches, MinLength } from 'class-validator';
+import { User } from '../entities/user.entity';
 
-export class CreateUserDto {
+export class CreateUserDto implements User {
+  id?: string;
+
   @IsString()
   @ApiProperty({
     description: 'Nome completo',
     example: 'Alex Faria',
   })
-  nome: string;
+  name: string;
 
   @IsString()
   @Matches(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i, {
@@ -24,13 +27,7 @@ export class CreateUserDto {
     description: 'Cargo do usuário',
     example: 'Admin',
   })
-  cargo: string;
-
-  @ApiProperty({
-    description: 'Instituição do usuário',
-    example: 'instituição x',
-  })
-  instituicaoId: [];
+  role: string;
 
   @IsString()
   @MinLength(6)
@@ -41,11 +38,11 @@ export class CreateUserDto {
     description: 'Senha do usuario',
     example: 'Alex@123456',
   })
-  senha: string;
+  password: string;
 
   @ApiProperty({
     description: 'Confirmação de senha deve ser igual',
     example: 'Alex@123456',
   })
-  confirmaSenha: string;
+  confirmPassword: string;
 }
