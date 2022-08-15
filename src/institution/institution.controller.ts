@@ -39,11 +39,11 @@ export class InstitutionController {
     summary: 'Atualiza uma instituição pelo ID',
   })
   update(
-    @Param('id') id: string,
+    @Param('id')
     @Body()
     updateInstitutionDto: UpdateInstitutionDto,
   ) {
-    return this.institutionService.update(id, updateInstitutionDto);
+    return this.institutionService.update(updateInstitutionDto);
   }
 
   // @Delete(':id')

@@ -5,7 +5,7 @@ import { Institution } from './entities/institution.entity';
 
 @Injectable()
 export class InstitutionRepository {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async createInstitution(data: Institution): Promise<Institution> {
     const PrismaInst = await this.prisma.institution.create({
@@ -24,10 +24,6 @@ export class InstitutionRepository {
     });
     return PrismaInst;
   }
-
-  // async findBillsByUser(userId: string): Promise<Bill[]> {
-  //   return await this.prisma.bill.findMany({ where: { userId } });
-  // }
 
   async findById(id: string): Promise<Institution> {
     const record = await this.prisma.institution.findUnique({
@@ -76,16 +72,19 @@ export class InstitutionRepository {
     });
   }
 
-  // async deleteBillById(billId: string): Promise<Bill> {
-  //   return await this.prisma.bill.delete({ where: { id: billId } });
-  // }
-
   async updateInstitution(data: UpdateInstitutionDto): Promise<Institution> {
     return await this.prisma.institution.update({
       where: {
         id: data.id,
       },
       data,
+      include: {
+        students: true,
+      },
     });
+  }
+
+  async deleteBillById(id: string): Promise<Institution> {
+    return await this.prisma.institution.delete({ where: { id: id } });
   }
 }
