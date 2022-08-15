@@ -1,26 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import { CreateConsultDto } from './dto/create-consult.dto';
-import { UpdateConsultDto } from './dto/update-consult.dto';
+import { ConsultRepository } from './consult.repository';
 
 @Injectable()
 export class ConsultService {
-  create(createConsultDto: CreateConsultDto) {
-    return 'This action adds a new consult';
-  }
+  constructor(private readonly repository: ConsultRepository) {}
 
-  findAll() {
-    return `This action returns all consult`;
-  }
+  // async create(dto: CreateConsultDto) {
+  //   return await this.repository.createConsult(dto);
+  // }
 
-  findOne(id: number) {
-    return `This action returns a #${id} consult`;
-  }
+  // findAll() {
+  //   return `This action returns all consult`;
+  // }
 
-  update(id: number, updateConsultDto: UpdateConsultDto) {
-    return `This action updates a #${id} consult`;
-  }
+  // findOne(id: number) {
+  //   return `This action returns a #${id} consult`;
+  // }
 
-  remove(id: number) {
-    return `This action removes a #${id} consult`;
-  }
+  // update(id: number, updateConsultDto: UpdateConsultDto) {
+  //   return `This action updates a #${id} consult`;
+  // }
+
+  // remove(id: number) {
+  //   return `This action removes a #${id} consult`;
+  // }
 }

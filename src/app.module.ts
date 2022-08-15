@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { ConsultModule } from './consult/consult.module';
 import { InstitutionModule } from './institution/institution.module';
 import { PrismaModule } from './prisma/prisma.module';
-import { StudantsModule } from './student/student.module';
+import { StudentsModule } from './student/student.module';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -12,7 +12,7 @@ import { UserModule } from './user/user.module';
     PrismaModule,
     UserModule,
     InstitutionModule,
-    StudantsModule,
+    StudentsModule,
     ConsultModule,
   ],
   controllers: [AppController],
