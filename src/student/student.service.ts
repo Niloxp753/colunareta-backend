@@ -1,8 +1,12 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { handleError } from 'src/utility/handle-error.utility';
+import { CreateStudentDto } from './dto/create-Student.dto';
 import { Student } from './entities/student.entity';
 import { StudentRepository } from './student.repository';
-import { CreateStudentDto } from './dto/create-Student.dto';
 
 @Injectable()
 export class StudentsService {
@@ -21,16 +25,13 @@ export class StudentsService {
     return await this.repository.findAllStudent();
   }
 
-  // async findById(id: string): Promise<Student> {
-  //   const record = await this.prisma.Student.findUnique({
-  //     where: { id },
-  //     select: this.StudentsSelect,
-  //   });
-  //   if (!record) {
-  //     throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
-  //   }
-  //   return record;
-  // }
+  async findById(id: string): Promise<Student> {
+    const record = await this.repository.findOneStudent(id);
+    if (!record) {
+      throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
+    }
+    return record;
+  }
 
   // findOne(id: string): Promise<Student> {
   //   return this.findById(id);

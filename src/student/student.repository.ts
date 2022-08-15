@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Student } from './entities/student.entity';
 
@@ -31,5 +31,16 @@ export class StudentRepository {
       },
     });
     return studentList;
+  }
+
+  async findOneStudent(id: string): Promise<Student> {
+    const record = await this.prisma.student.findUnique({
+      where: { id },
+    });
+
+    if (!record) {
+      throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
+    }
+    return record;
   }
 }

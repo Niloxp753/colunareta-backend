@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { StudentsService } from './student.service';
 // import { CreateStudantDto } from './dto/create-studant.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -6,7 +6,7 @@ import { CreateStudentDto } from './dto/create-student.dto';
 
 @ApiTags('students')
 @Controller('student')
-export class StudantsController {
+export class StudentsController {
   constructor(private readonly studantsService: StudentsService) {}
 
   @Post()
@@ -25,13 +25,13 @@ export class StudantsController {
     return this.studantsService.findAll();
   }
 
-  // @Get(':id')
-  // @ApiOperation({
-  //   summary: 'Vizualiza um aluno pelo ID',
-  // })
-  // findOne(@Param('id') id: string) {
-  //   return this.studantsService.findOne(id);
-  // }
+  @Get(':id')
+  @ApiOperation({
+    summary: 'Vizualiza um aluno pelo ID',
+  })
+  findOne(@Param('id') id: string) {
+    return this.studantsService.findById(id);
+  }
 
   // @Patch(':id')
   // @ApiOperation({
