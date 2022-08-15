@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 // import { User } from 'src/user/entities/user.entity';
 // import { handleError } from 'src/utility/handle-error.utility';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
-import { UpdateInstitutionDto } from './dto/update-institution.dto';
 // import { UpdateInstitutionDto } from './dto/update-institution.dto';
 import { Institution } from './entities/institution.entity';
 import { InstitutionRepository } from './institution.repository';
@@ -15,9 +14,9 @@ export class InstitutionService {
   async create(dto: CreateInstitutionDto): Promise<Institution> {
     return await this.repository.createInstitution(dto);
   }
-  async update(updateInstitutionDto: UpdateInstitutionDto) {
-    return await this.repository.updateInstitution(updateInstitutionDto);
-  }
+  // async update(updateInstitutionDto: UpdateInstitutionDto) {
+  //   return await this.repository.updateInstitution(updateInstitutionDto);
+  // }
 
   //   async findAll(user: User) {
   //     const institutionList = await this.prisma.institution.findMany({

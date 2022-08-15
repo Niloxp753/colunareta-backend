@@ -1,9 +1,8 @@
-import { Body, Controller, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { InstitutionService } from './institution.service';
 // import { UpdateInstitutionDto } from './dto/update-institution.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { UpdateInstitutionDto } from './dto/update-institution.dto';
 
 @ApiTags('institutions')
 @Controller('institutions')
@@ -34,17 +33,17 @@ export class InstitutionController {
   //   return this.institutionService.findOne(id);
   // }
 
-  @Patch(':id')
-  @ApiOperation({
-    summary: 'Atualiza uma instituição pelo ID',
-  })
-  update(
-    @Param('id')
-    @Body()
-    updateInstitutionDto: UpdateInstitutionDto,
-  ) {
-    return this.institutionService.update(updateInstitutionDto);
-  }
+  // @Patch(':id')
+  // @ApiOperation({
+  //   summary: 'Atualiza uma instituição pelo ID',
+  // })
+  // update(
+  //   @Param('id')
+  //   @Body()
+  //   updateInstitutionDto: UpdateInstitutionDto,
+  // ) {
+  //   return this.institutionService.update(updateInstitutionDto);
+  // }
 
   // @Delete(':id')
   // @HttpCode(HttpStatus.NO_CONTENT)
