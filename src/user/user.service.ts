@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
@@ -30,6 +34,14 @@ export class UserService {
       throw new BadRequestException('Nenhum usuário cadastrado');
     }
     return await this.repository.findAllUser();
+  }
+
+  async findById(id: string): Promise<User> {
+    const record = await this.repository.findByUserId(id);
+    if (!record) {
+      throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
+    }
+    return record;
   }
 
   // async findById(id: string): Promise<User> {

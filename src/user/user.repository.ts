@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { User } from './entities/user.entity';
 
@@ -21,7 +21,13 @@ export class UserRepository {
   }
 
   async findAllUser(): Promise<User[]> {
-    const userList = await this.prisma.user.findMany({
+    const userList = await this.prisma.user.findMany();
+    return userList;
+  }
+
+  async findByUserId(id: string): Promise<User> {
+    const record = await this.prisma.user.findUnique({
+      where: { id },
       select: {
         id: true,
         name: true,
@@ -31,6 +37,6 @@ export class UserRepository {
         role: true,
       },
     });
-    return userList;
+    return record;
   }
 }
