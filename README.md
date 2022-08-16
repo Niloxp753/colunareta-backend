@@ -1,14 +1,14 @@
 # Coluna Reta
 
-Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de alunos, participantes de instituíções vinculadas ao projeto Coluna Reta. Nada mais justo que uma plataforma de interação com o médico responsável pela saúde dos alunos, onde o mesmo pode criar seu usuário, e criar os alunos nas suas respectivas instituíções. Enquanto o admin fica responsável pelo cadastro das instituíções e averiguação dos dados da instituíção, dos médicos e dos alunos.
+Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de alunos, participantes de instituíções vinculadas ao projeto Coluna Reta. Nada mais justo que uma plataforma de interação com o médico responsável pela saúde dos alunos, onde o mesmo pode criar seu usuário, e cadastrar os alunos nas suas respectivas instituíções. Enquanto o admin fica responsável pelo cadastro das instituíções e averiguação dos dados da instituíção, dos médicos e dos alunos.
 
-### 📋 Pré-requisitos
+## 📋 Pré-requisitos
 
 > - **Node** com versão superior ou igual que 8.1 - [Node Download](https://nodejs.org/pt-br/download/)
 > - **NPM** com versão superior ou igual que 5.6 - [Npm Download](https://www.npmjs.com/package/download)
 > - **Prisma** com versão superior ou igual que 3.14
 
-### 🔧 Instalação
+## 🔧 Instalação
 
 >
 > Clone esse projeto em seu computador com o comando:
