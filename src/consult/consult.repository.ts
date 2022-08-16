@@ -35,6 +35,14 @@ export class ConsultRepository {
         schedule: true,
         hour: true,
         studentId: true,
+        students: {
+          select: {
+            name: true,
+            age: true,
+            phone: true,
+            institutionId: true,
+          },
+        },
       },
     });
     return record;
