@@ -3,7 +3,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
 import { UpdateConsultDto } from './dto/update-consult.dto';
 import { Consult } from './entities/consult.entity';
-
 @Injectable()
 export class ConsultRepository {
   constructor(private readonly prisma: PrismaService) {}
@@ -49,10 +48,11 @@ export class ConsultRepository {
   }
 
   async updateConsult(id: string, data: UpdateConsultDto): Promise<Consult> {
-    return await this.prisma.consult.update({
+    const consultas = await this.prisma.consult.update({
       where: { id },
       data,
     });
+    return consultas;
   }
 
   async deleteConsult(id: string): Promise<Consult> {

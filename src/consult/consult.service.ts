@@ -39,7 +39,7 @@ export class ConsultService {
 
     const data: Partial<Consult> = { ...dto };
 
-    return this.repository.updateConsult(id, data).catch(handleError);
+    return await this.repository.updateConsult(id, data).catch(handleError);
   }
 
   async delete(id: string): Promise<Consult> {
