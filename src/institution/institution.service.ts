@@ -4,12 +4,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { handleError } from 'src/utility/handle-error.utility';
-// import { PrismaService } from 'src/prisma/prisma.service';
-// import { User } from 'src/user/entities/user.entity';
-// import { handleError } from 'src/utility/handle-error.utility';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
-// import { UpdateInstitutionDto } from './dto/update-institution.dto';
 import { Institution } from './entities/institution.entity';
 import { InstitutionRepository } from './institution.repository';
 
