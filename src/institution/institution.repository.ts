@@ -1,5 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { UpdateInstitutionDto } from './dto/update-institution.dto';
 import { Institution } from './entities/institution.entity';
 
 @Injectable()
@@ -46,14 +47,25 @@ export class InstitutionRepository {
         students: true,
       },
     });
-
-    if (!record) {
-      throw new NotFoundException(`Registro com o ID '${id}' não encontrado.`);
-    }
-
     return record;
   }
 
+  async updateInstitution(
+    id: string,
+    data: UpdateInstitutionDto,
+  ): Promise<Institution> {
+    return await this.prisma.institution.update({
+      where: { id },
+      data,
+      include: {
+        students: true,
+      },
+    });
+  }
+
+  async deleteInstitution(id: string): Promise<Institution> {
+    return await this.prisma.institution.delete({ where: { id } });
+  }
   // async findOne(id: string) {
   //   await this.findById(id);
 
@@ -97,8 +109,4 @@ export class InstitutionRepository {
   //     },
   //   });
   // }
-
-  async deleteBillById(id: string): Promise<Institution> {
-    return await this.prisma.institution.delete({ where: { id: id } });
-  }
 }
