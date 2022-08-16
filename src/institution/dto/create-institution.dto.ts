@@ -83,10 +83,5 @@ export class CreateInstitutionDto implements Institution {
   })
   complement: string;
 
-  // @IsString()
-  @ApiProperty({
-    description: 'Alunos da Instituição cadastrada',
-    example: 'Thiago Ventura',
-  })
   students?: Student[];
 }

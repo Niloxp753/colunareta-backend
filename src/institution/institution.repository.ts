@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Institution } from './entities/institution.entity';
 
@@ -25,7 +25,13 @@ export class InstitutionRepository {
   }
 
   async findAllInstitution(): Promise<Institution[]> {
-    const institutionList = await this.prisma.institution.findMany({
+    const institutionList = await this.prisma.institution.findMany();
+    return institutionList;
+  }
+
+  async findByInstitutionId(id: string): Promise<Institution> {
+    const record = await this.prisma.institution.findUnique({
+      where: { id },
       select: {
         id: true,
         name: true,
@@ -40,23 +46,13 @@ export class InstitutionRepository {
         students: true,
       },
     });
-    return institutionList;
+
+    if (!record) {
+      throw new NotFoundException(`Registro com o ID '${id}' não encontrado.`);
+    }
+
+    return record;
   }
-
-  // async findById(id: string): Promise<Institution> {
-  //   const record = await this.prisma.institution.findUnique({
-  //     where: { id },
-  //     include: {
-  //       students: true,
-  //     },
-  //   });
-
-  //   if (!record) {
-  //     throw new NotFoundException(`Registro com o ID '${id}' não encontrado.`);
-  //   }
-
-  //   return record;
-  // }
 
   // async findOne(id: string) {
   //   await this.findById(id);

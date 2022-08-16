@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { InstitutionService } from './institution.service';
 // import { UpdateInstitutionDto } from './dto/update-institution.dto';
@@ -25,13 +25,13 @@ export class InstitutionController {
     return this.institutionService.findAll();
   }
 
-  // @Get(':id')
-  // @ApiOperation({
-  //   summary: 'Visualiza uma instituição pelo ID',
-  // })
-  // findOne(@Param('id') id: string) {
-  //   return this.institutionService.findOne(id);
-  // }
+  @Get(':id')
+  @ApiOperation({
+    summary: 'Visualiza uma instituição pelo ID',
+  })
+  findOne(@Param('id') id: string) {
+    return this.institutionService.findById(id);
+  }
 
   // @Patch(':id')
   // @ApiOperation({

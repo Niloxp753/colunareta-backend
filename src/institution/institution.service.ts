@@ -1,4 +1,9 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { handleError } from 'src/utility/handle-error.utility';
 // import { PrismaService } from 'src/prisma/prisma.service';
 // import { User } from 'src/user/entities/user.entity';
 // import { handleError } from 'src/utility/handle-error.utility';
@@ -12,7 +17,7 @@ export class InstitutionService {
   constructor(private readonly repository: InstitutionRepository) {}
 
   async create(dto: CreateInstitutionDto): Promise<Institution> {
-    return await this.repository.createInstitution(dto);
+    return await this.repository.createInstitution(dto).catch(handleError);
   }
 
   async findAll(): Promise<Institution[]> {
@@ -22,6 +27,14 @@ export class InstitutionService {
       throw new BadRequestException('Nenhuma instituição cadastrada');
     }
     return await this.repository.findAllInstitution();
+  }
+
+  async findById(id: string): Promise<Institution> {
+    const record = await this.repository.findByInstitutionId(id);
+    if (!record) {
+      throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
+    }
+    return record;
   }
 
   // async update(updateInstitutionDto: UpdateInstitutionDto) {
