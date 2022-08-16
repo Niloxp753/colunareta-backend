@@ -45,7 +45,6 @@ Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de
 * [GitHub](https://github.com/) - Usado para criar o repositório
 * [Railway](https://railway.app/) - Plataforma usada para realizar o deploy
 
-
 ## ✒️ Autores
 
 * **Kellbber Zucatti Barcarolo** - (https://github.com/Kellbber)
@@ -54,11 +53,9 @@ Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de
 * **Alex Caras de Faria** - (https://github.com/AlexFariaa)
 * **Danilo Alves de Aguiar** - (https://github.com/ddanilooalves)
 
-> ```
 ## 📄 Licença
 
 [LICENSE.md](https://github.com/Kellbber/BTC--equipe-01--backend/blob/main/LICENSE)
-
 
 ## 🎁 Expressões de gratidão
 
