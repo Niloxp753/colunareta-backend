@@ -37,7 +37,7 @@ export class ConsultController {
 
   @Get(':id')
   @ApiOperation({
-    summary: 'Visualiza um aluno pelo ID',
+    summary: 'Visualiza uma consulta pelo ID',
   })
   findOne(@Param('id') id: string) {
     return this.consultService.findById(id);
@@ -45,7 +45,7 @@ export class ConsultController {
 
   @Patch(':id')
   @ApiOperation({
-    summary: 'Atualiza um aluno pelo ID',
+    summary: 'Atualiza uma consulta pelo ID',
   })
   update(@Param('id') id: string, @Body() dto: UpdateConsultDto) {
     return this.consultService.update(id, dto);
@@ -54,7 +54,7 @@ export class ConsultController {
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({
-    summary: 'Deleta um aluno pelo ID',
+    summary: 'Deleta uma consulta pelo ID',
   })
   delete(@Param('id') id: string) {
     return this.consultService.delete(id);
