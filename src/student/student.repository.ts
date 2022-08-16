@@ -20,7 +20,13 @@ export class StudentRepository {
   }
 
   async findAllStudent(): Promise<Student[]> {
-    const studentList = await this.prisma.student.findMany({
+    const studentList = await this.prisma.student.findMany();
+    return studentList;
+  }
+
+  async findByStudentId(id: string): Promise<Student> {
+    const record = await this.prisma.student.findUnique({
+      where: { id },
       select: {
         id: true,
         name: true,
@@ -30,17 +36,6 @@ export class StudentRepository {
         consult: true,
       },
     });
-    return studentList;
-  }
-
-  async findOneStudent(id: string): Promise<Student> {
-    const record = await this.prisma.student.findUnique({
-      where: { id },
-    });
-
-    if (!record) {
-      throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
-    }
     return record;
   }
 }

@@ -30,7 +30,7 @@ export class CreateStudentDto implements Student {
   @IsString()
   @ApiProperty({
     description: 'Id da instituição onde o aluno estuda',
-    example: '074ac01e-ec6d-4277-b09f-bcdea2820a12',
+    example: '28755b42-a426-4a94-bb7e-42e2632333d5',
   })
   institutionId: string;
 

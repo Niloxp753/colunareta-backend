@@ -26,7 +26,7 @@ export class StudentsService {
   }
 
   async findById(id: string): Promise<Student> {
-    const record = await this.repository.findOneStudent(id);
+    const record = await this.repository.findByStudentId(id);
     if (!record) {
       throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
     }
