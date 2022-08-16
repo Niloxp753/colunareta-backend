@@ -23,7 +23,7 @@ export class StudentsService {
     if (studentExist.length <= 0) {
       throw new BadRequestException('Nenhum aluno cadastrado');
     }
-    return await this.repository.findAllStudent();
+    return studentExist;
   }
 
   async findById(id: string): Promise<Student> {
