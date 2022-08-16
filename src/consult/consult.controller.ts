@@ -1,7 +1,18 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ConsultService } from './consult.service';
 import { CreateConsultDto } from './dto/create-consult.dto';
+import { UpdateConsultDto } from './dto/update-consult.dto';
 
 @ApiTags('consults')
 @Controller('consult')
@@ -16,23 +27,36 @@ export class ConsultController {
     return this.consultService.create(createConsultDto);
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.consultService.findAll();
-  // }
+  @Get('find-all')
+  @ApiOperation({
+    summary: 'Lista todas as consultas cadastrados',
+  })
+  findAll() {
+    return this.consultService.findAll();
+  }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.consultService.findOne(+id);
-  // }
+  @Get(':id')
+  @ApiOperation({
+    summary: 'Visualiza um aluno pelo ID',
+  })
+  findOne(@Param('id') id: string) {
+    return this.consultService.findById(id);
+  }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateConsultDto: UpdateConsultDto) {
-  //   return this.consultService.update(+id, updateConsultDto);
-  // }
+  @Patch(':id')
+  @ApiOperation({
+    summary: 'Atualiza um aluno pelo ID',
+  })
+  update(@Param('id') id: string, @Body() dto: UpdateConsultDto) {
+    return this.consultService.update(id, dto);
+  }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.consultService.remove(+id);
-  // }
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({
+    summary: 'Deleta um aluno pelo ID',
+  })
+  delete(@Param('id') id: string) {
+    return this.consultService.delete(id);
+  }
 }
