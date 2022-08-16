@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDataURI, IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 import { Consult } from '../entities/consult.entity';
 
 export class CreateConsultDto implements Consult {
@@ -7,7 +7,6 @@ export class CreateConsultDto implements Consult {
 
   @IsString()
   @IsNotEmpty()
-  @IsDataURI()
   @ApiProperty({
     description: 'Data das consultas',
     example: '26/05/2022',
@@ -25,8 +24,8 @@ export class CreateConsultDto implements Consult {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    description: 'ID do Aluno que fará a consulta',
-    example: '070f1cc1-b571-409c-ab69-66cc970a20bd',
+    description: 'ID do aluno',
+    example: 'c20ca255-15b2-489c-ab69-5ed167fb1dd7',
   })
   studentId: string;
 }

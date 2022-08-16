@@ -1,19 +1,20 @@
-import { Controller } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Post } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ConsultService } from './consult.service';
+import { CreateConsultDto } from './dto/create-consult.dto';
 
 @ApiTags('consults')
 @Controller('consult')
 export class ConsultController {
   constructor(private readonly consultService: ConsultService) {}
 
-  // @Post()
-  // @ApiOperation({
-  //   summary: 'Cria uma nova consulta',
-  // })
-  // create(@Body() createConsultDto: CreateConsultDto) {
-  //   return this.consultService.create(createConsultDto);
-  // }
+  @Post()
+  @ApiOperation({
+    summary: 'Cria uma nova consulta',
+  })
+  create(@Body() createConsultDto: CreateConsultDto) {
+    return this.consultService.create(createConsultDto);
+  }
 
   // @Get()
   // findAll() {

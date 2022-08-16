@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { ConsultRepository } from './consult.repository';
+import { CreateConsultDto } from './dto/create-consult.dto';
 
 @Injectable()
 export class ConsultService {
   constructor(private readonly repository: ConsultRepository) {}
 
-  // async create(dto: CreateConsultDto) {
-  //   return await this.repository.createConsult(dto);
-  // }
+  async create(dto: CreateConsultDto) {
+    return await this.repository.createConsult(dto);
+  }
 
   // findAll() {
   //   return `This action returns all consult`;
