@@ -13,11 +13,11 @@ Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de
 >
 > Clone esse projeto em seu computador com o comando:
 > ```
-> 	git clone [Url do seu repositório]
+> 	git clone [https://github.com/Kellbber/BTC--equipe-01--backend.git]
 > ```
 > Acesse a pasta do projeto no seu terminal:
 > ```
-> 	cd [Nome da pasta do seu Projeto]
+> 	cd [BTC--equipe-01--backend]
 > ```
 > Na pasta da aplicação em seu terminal, digite o seguinte comando:
 > ```
@@ -33,6 +33,7 @@ Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de
 > ```
 > A aplicação estará disponível para visualização em seu navegador, caso isso não aconteça automaticamente abre o navegador no seguinte endereço: _localhost:3333/api_
 
+
 > CASO QUEIRA EXECUTAR DIRETAMENTE PELO DEPLOY:
 > ```
 >   Link
@@ -44,6 +45,7 @@ Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de
 * [GitHub](https://github.com/) - Usado para criar o repositório
 * [Railway](https://railway.app/) - Plataforma usada para realizar o deploy
 
+
 ## ✒️ Autores
 
 * **Kellbber Zucatti Barcarolo** - (https://github.com/Kellbber)
@@ -52,9 +54,11 @@ Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de
 * **Alex Caras de Faria** - (https://github.com/AlexFariaa)
 * **Danilo Alves de Aguiar** - (https://github.com/ddanilooalves)
 
+
 ## 📄 Licença
 
 [LICENSE.md](https://github.com/Kellbber/BTC--equipe-01--backend/blob/main/LICENSE)
+
 
 ## 🎁 Expressões de gratidão
 
