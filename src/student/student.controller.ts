@@ -22,7 +22,7 @@ export class StudentsController {
 
   @Post()
   @ApiOperation({
-    summary: 'Cadastrar um aluno',
+    summary: 'Cria um novo aluno',
   })
   create(@Body() createStudentDto: CreateStudentDto) {
     return this.studantsService.create(createStudentDto);
@@ -38,7 +38,7 @@ export class StudentsController {
 
   @Get(':id')
   @ApiOperation({
-    summary: 'Vizualiza um aluno pelo ID',
+    summary: 'Visualiza um aluno pelo ID',
   })
   findOne(@Param('id') id: string) {
     return this.studantsService.findById(id);
@@ -46,7 +46,7 @@ export class StudentsController {
 
   @Patch(':id')
   @ApiOperation({
-    summary: 'Atulizar um aluno pelo ID',
+    summary: 'Atualiza um aluno pelo ID',
   })
   update(@Param('id') id: string, @Body() dto: UpdateStudentDto) {
     return this.studantsService.update(id, dto);
@@ -55,7 +55,7 @@ export class StudentsController {
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({
-    summary: 'Deletar um aluno pelo ID',
+    summary: 'Deleta um aluno pelo ID',
   })
   delete(@Param('id') id: string) {
     return this.studantsService.delete(id);

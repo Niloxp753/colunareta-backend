@@ -49,28 +49,4 @@ export class StudentsService {
     }
     return record;
   }
-
-  // findOne(id: string): Promise<Student> {
-  //   return this.findById(id);
-  // }
-
-  // async update(id: string, dto: UpdateStudentDto): Promise<Student> {
-  //   await this.findById(id);
-
-  //   const data: Partial<Student> = {
-  //     ...dto,
-  //   };
-  //   return this.prisma.Student
-  //     .update({
-  //       where: { id },
-  //       data,
-  //       select: this.StudentsSelect,
-  //     })
-  //     .catch(handleError);
-  // }
-
-  // async delete(id: string) {
-  //   await this.findById(id);
-  //   await this.prisma.Student.delete({ where: { id } });
-  // }
 }
