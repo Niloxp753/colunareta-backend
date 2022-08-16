@@ -23,13 +23,6 @@ export class CreateUserDto implements User {
   email: string;
 
   @IsString()
-  @ApiProperty({
-    description: 'Cargo do usuário',
-    example: 'Admin',
-  })
-  role: string;
-
-  @IsString()
   @MinLength(6)
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'Senha muito fraca',
