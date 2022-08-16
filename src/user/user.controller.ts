@@ -1,6 +1,15 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 
 @ApiTags('users')
@@ -24,27 +33,27 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  // @Get(':id')
-  // @ApiOperation({
-  //   summary: 'Localiza o usuário pelo ID',
-  // })
-  // findOne(@Param('id') id: string) {
-  //   return this.userService.findOne(id);
-  // }
+  @Get(':id')
+  @ApiOperation({
+    summary: 'Localiza o usuário pelo ID',
+  })
+  findOne(@Param('id') id: string) {
+    return this.userService.findById(id);
+  }
 
-  // @Patch(':id')
-  // @ApiOperation({
-  //   summary: 'Atualiza o usuário pelo ID',
-  // })
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.userService.update(id, updateUserDto);
-  // }
+  @Patch(':id')
+  @ApiOperation({
+    summary: 'Atualiza o usuário pelo ID',
+  })
+  update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
+    return this.userService.update(id, dto);
+  }
 
-  // @Delete(':id')
-  // @ApiOperation({
-  //   summary: 'Deleta um usuário pelo ID',
-  // })
-  // delete(@Param('id') id: string) {
-  //   return this.userService.delete(id);
-  // }
+  @Delete(':id')
+  @ApiOperation({
+    summary: 'Deleta um usuário pelo ID',
+  })
+  delete(@Param('id') id: string) {
+    return this.userService.delete(id);
+  }
 }

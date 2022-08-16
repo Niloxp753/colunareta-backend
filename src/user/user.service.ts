@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 import { UserRepository } from './user.repository';
 
@@ -13,8 +14,10 @@ export class UserService {
   constructor(private readonly repository: UserRepository) {}
 
   async create(dto: CreateUserDto): Promise<User> {
-    if (dto.password != dto.confirmPassword) {
-      throw new BadRequestException('As senhas informadas não são iguais');
+    if (dto.password) {
+      if (dto.password != dto.confirmPassword) {
+        throw new BadRequestException('As senhas informadas não são iguais');
+      }
     }
 
     const data: User = {
@@ -33,11 +36,33 @@ export class UserService {
     if (userExist.length < 0) {
       throw new BadRequestException('Nenhum usuário cadastrado');
     }
-    return await this.repository.findAllUser();
+    return await this.repository.findAllUser().catch(handleError);
   }
 
   async findById(id: string): Promise<User> {
-    const record = await this.repository.findByUserId(id);
+    const record = await this.repository.findByUserId(id).catch(handleError);
+    if (!record) {
+      throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
+    }
+    return record;
+  }
+
+  async update(id: string, dto: UpdateUserDto): Promise<User> {
+    await this.repository.findByUserId(id).catch(handleError);
+
+    if (dto.password) {
+      if (dto.password === dto.confirmPassword) {
+        throw new BadRequestException('As senhas informadas não são iguais');
+      }
+    }
+
+    const data: Partial<User> = { ...dto };
+
+    return this.repository.updateUser(id, data).catch(handleError);
+  }
+
+  async delete(id: string): Promise<User> {
+    const record = await this.repository.deleteUser(id).catch(handleError);
     if (!record) {
       throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
     }
