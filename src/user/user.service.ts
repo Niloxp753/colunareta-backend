@@ -23,7 +23,6 @@ export class UserService {
     const data: User = {
       ...dto,
       password: dto.password,
-      role: dto.role,
       confirmPassword: dto.confirmPassword,
     };
 

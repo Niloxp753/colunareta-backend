@@ -14,7 +14,6 @@ export class UserRepository {
         name: data.name,
         email: data.email,
         password: data.password,
-        role: data.role,
         confirmPassword: data.confirmPassword,
       },
     });
