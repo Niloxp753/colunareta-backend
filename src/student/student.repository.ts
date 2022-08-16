@@ -1,5 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { UpdateStudentDto } from './dto/update-student.dto';
 import { Student } from './entities/student.entity';
 
 @Injectable()
@@ -37,5 +38,18 @@ export class StudentRepository {
       },
     });
     return record;
+  }
+
+  async updateStudent(id: string, data: UpdateStudentDto): Promise<Student> {
+    return await this.prisma.student.update({
+      where: { id },
+      data,
+    });
+  }
+
+  async deleteStudent(id: string): Promise<Student> {
+    return await this.prisma.student.delete({
+      where: { id },
+    });
   }
 }

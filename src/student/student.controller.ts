@@ -1,8 +1,19 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { StudentsService } from './student.service';
 // import { CreateStudantDto } from './dto/create-studant.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateStudentDto } from './dto/create-student.dto';
+import { UpdateStudentDto } from './dto/update-student.dto';
 
 @ApiTags('students')
 @Controller('student')
@@ -33,20 +44,20 @@ export class StudentsController {
     return this.studantsService.findById(id);
   }
 
-  // @Patch(':id')
-  // @ApiOperation({
-  //   summary: 'Atulizar um aluno pelo ID',
-  // })
-  // update(@Param('id') id: string, @Body() updateStudantDto: UpdateStudantDto) {
-  //   return this.studantsService.update(id, updateStudantDto);
-  // }
+  @Patch(':id')
+  @ApiOperation({
+    summary: 'Atulizar um aluno pelo ID',
+  })
+  update(@Param('id') id: string, @Body() dto: UpdateStudentDto) {
+    return this.studantsService.update(id, dto);
+  }
 
-  // @Delete(':id')
-  // @HttpCode(HttpStatus.NO_CONTENT)
-  // @ApiOperation({
-  //   summary: 'Deletar um aluno pelo ID',
-  // })
-  // delete(@Param('id') id: string) {
-  //   return this.studantsService.delete(id);
-  // }
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({
+    summary: 'Deletar um aluno pelo ID',
+  })
+  delete(@Param('id') id: string) {
+    return this.studantsService.delete(id);
+  }
 }
