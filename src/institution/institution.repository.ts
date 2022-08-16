@@ -66,47 +66,4 @@ export class InstitutionRepository {
   async deleteInstitution(id: string): Promise<Institution> {
     return await this.prisma.institution.delete({ where: { id } });
   }
-  // async findOne(id: string) {
-  //   await this.findById(id);
-
-  //   return await this.prisma.institution.findUnique({
-  //     where: { id },
-  //     select: {
-  //       name: true,
-  //       phone: true,
-  //       cep: true,
-  //       city: true,
-  //       state: true,
-  //       street: true,
-  //       district: true,
-  //       adressNumber: true,
-  //       complement: true,
-  //       students: {
-  //         select: {
-  //           id: true,
-  //           name: true,
-  //           consult: {
-  //             select: {
-  //               id: true,
-  //               schedule: true,
-  //               hour: true,
-  //             },
-  //           },
-  //         },
-  //       },
-  //     },
-  //   });
-  // }
-
-  // async updateInstitution(data: UpdateInstitutionDto): Promise<Institution> {
-  //   return await this.prisma.institution.update({
-  //     where: {
-  //       id: data.id,
-  //     },
-  //     data,
-  //     include: {
-  //       students: true,
-  //     },
-  //   });
-  // }
 }
