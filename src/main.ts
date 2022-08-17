@@ -13,7 +13,6 @@ async function bootstrap() {
     .setDescription('A fazer')
     .setVersion('1.0.0')
     .addTag('status')
-    .addTag('auth')
     .addTag('users')
     .addTag('institutions')
     .addTag('students')
