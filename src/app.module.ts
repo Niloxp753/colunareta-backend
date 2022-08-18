@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthorizationModule } from './authorization/authorization.module';
+import { AuthtesteController } from './authteste/authteste.controller';
 import { ConsultModule } from './consult/consult.module';
 import { InstitutionModule } from './institution/institution.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { StudentsModule } from './student/student.module';
 import { UserModule } from './user/user.module';
-import { AuthorizationModule } from './authorization/authorization.module';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { AuthorizationModule } from './authorization/authorization.module';
     ConsultModule,
     AuthorizationModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, AuthtesteController],
   providers: [AppService],
 })
 export class AppModule {}
