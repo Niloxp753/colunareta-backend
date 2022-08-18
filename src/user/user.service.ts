@@ -67,48 +67,4 @@ export class UserService {
     }
     return record;
   }
-
-  // async findById(id: string): Promise<User> {
-  //   const record = await this.prisma.user
-  //     .findUnique({
-  //       where: { id },
-  //       select: this.userSelect,
-  //     })
-  //     .catch(handleError);
-  //   if (!record) {
-  //     throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
-  //   }
-  //   return record;
-  // }
-
-  // async findOne(id: string): Promise<User> {
-  //   return this.findById(id).catch(handleError);
-  // }
-
-  // async update(id: string, dto: UpdateUserDto): Promise<User> {
-  //   await this.findById(id);
-
-  //   if (dto.password) {
-  //     if (dto.password != dto.confirmPassword) {
-  //       throw new BadRequestException('As senhas informadas não são iguais');
-  //     }
-  //   }
-
-  //   delete dto.confirmPassword;
-
-  //   const data: Partial<User> = { ...dto };
-
-  //   return this.prisma.user
-  //     .update({
-  //       where: { id },
-  //       data,
-  //       select: this.userSelect,
-  //     })
-  //     .catch(handleError);
-  // }
-
-  // async delete(id: string) {
-  //   await this.findById(id);
-  //   await this.prisma.user.delete({ where: { id } }).catch(handleError);
-  // }
 }
