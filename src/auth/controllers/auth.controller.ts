@@ -10,10 +10,13 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { User } from '@prisma/client';
-import { AuthService } from './auth.service';
-import { LoginResponseDto } from './dto/login-response.dto';
-import { LoginDto } from './dto/login.dto';
-import { LoggedUser } from './logged-user.decorator';
+import { AuthService } from '../services/auth.service';
+import { Roles } from '../decorators/roles.decorator';
+import { LoginResponseDto } from '../dto/login-response.dto';
+import { LoginDto } from '../dto/login.dto';
+import { RolesGuard } from '../guards/roles.guard';
+import { LoggedUser } from '../logged-user.decorator';
+import { Role } from '../models/role.enum';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -30,7 +33,8 @@ export class AuthController {
   }
 
   @Get()
-  @UseGuards(AuthGuard('jwt'))
+  @Roles(Role.ADMIN, Role.CAMPO, Role.BACKOFFICE)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @ApiOperation({
     summary: 'Retorna o usuário autenticado no momento',
   })
