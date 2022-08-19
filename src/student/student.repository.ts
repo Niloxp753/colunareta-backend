@@ -21,7 +21,13 @@ export class StudentRepository {
   }
 
   async findAllStudent(): Promise<Student[]> {
-    const studentList = await this.prisma.student.findMany();
+    const studentList = await this.prisma.student.findMany({include:{
+      institution:{
+        select:{
+          name:true
+        }
+      }
+    }});
     return studentList;
   }
 
