@@ -8,13 +8,17 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ConsultService } from './consult.service';
 import { CreateConsultDto } from './dto/create-consult.dto';
 import { UpdateConsultDto } from './dto/update-consult.dto';
 
 @ApiTags('consults')
+@UseGuards(AuthGuard('jwt'))
+@ApiBearerAuth()
 @Controller('consult')
 export class ConsultController {
   constructor(private readonly consultService: ConsultService) {}
