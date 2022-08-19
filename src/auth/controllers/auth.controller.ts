@@ -32,9 +32,9 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
-  @Get()
-  @Roles(Role.ADMIN, Role.CAMPO, Role.BACKOFFICE)
+  @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Get()
   @ApiOperation({
     summary: 'Retorna o usuário autenticado no momento',
   })
