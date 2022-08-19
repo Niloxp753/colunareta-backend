@@ -8,14 +8,18 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { StudentsService } from './student.service';
 // import { CreateStudantDto } from './dto/create-studant.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('students')
+@UseGuards(AuthGuard('jwt'))
+@ApiBearerAuth()
 @Controller('student')
 export class StudentsController {
   constructor(private readonly studantsService: StudentsService) {}
