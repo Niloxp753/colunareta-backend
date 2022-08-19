@@ -21,14 +21,13 @@ export class UserService {
       }
     }
 
-    delete dto.confirmPassword;
-
     const data: User = {
       ...dto,
       password: await bcrypt.hash(dto.password, 10),
       confirmPassword: dto.confirmPassword,
     };
 
+    delete dto.confirmPassword;
     return await this.repository.createUser(data).catch(handleError);
   }
 
