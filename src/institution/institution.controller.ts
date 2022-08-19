@@ -8,14 +8,17 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { InstitutionService } from './institution.service';
-// import { UpdateInstitutionDto } from './dto/update-institution.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('institutions')
+@UseGuards(AuthGuard('jwt'))
+@ApiBearerAuth()
 @Controller('institutions')
 export class InstitutionController {
   constructor(private readonly institutionService: InstitutionService) {}

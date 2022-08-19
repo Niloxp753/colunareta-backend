@@ -15,7 +15,7 @@ export class InstitutionRepository {
         cep: data.cep,
         phone: data.phone,
         street: data.street,
-        adressNumber: data.street,
+        adressNumber: data.adressNumber,
         district: data.district,
         city: data.city,
         state: data.state,
