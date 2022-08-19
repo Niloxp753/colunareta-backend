@@ -10,6 +10,11 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Role } from 'src/auth/models/role.enum';
+
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
@@ -27,8 +32,9 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @Roles(Role.ADMIN)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get('find-all')
-  @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
   @ApiOperation({
     summary: 'Visualiza todos os usuários',
@@ -37,6 +43,8 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @Roles(Role.ADMIN)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get(':id')
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
@@ -47,6 +55,8 @@ export class UserController {
     return this.userService.findById(id);
   }
 
+  @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
@@ -57,6 +67,8 @@ export class UserController {
     return this.userService.update(id, dto);
   }
 
+  @Roles(Role.ADMIN)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Delete(':id')
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
