@@ -16,6 +16,10 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
 import { AuthGuard } from '@nestjs/passport';
 
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Role } from 'src/auth/models/role.enum';
+
 @ApiTags('institutions')
 @UseGuards(AuthGuard('jwt'))
 @ApiBearerAuth()
@@ -23,6 +27,8 @@ import { AuthGuard } from '@nestjs/passport';
 export class InstitutionController {
   constructor(private readonly institutionService: InstitutionService) {}
 
+  @Roles(Role.ADMIN, Role.BACKOFFICE)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Post()
   @ApiOperation({
     summary: 'Cria uma nova instituição',
@@ -31,6 +37,8 @@ export class InstitutionController {
     return this.institutionService.create(createInstitutionDto);
   }
 
+  @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get('find-all')
   @ApiOperation({
     summary: 'Lista todas as instituições',
@@ -39,6 +47,8 @@ export class InstitutionController {
     return this.institutionService.findAll();
   }
 
+  @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get(':id')
   @ApiOperation({
     summary: 'Visualiza uma instituição pelo ID',
@@ -47,6 +57,8 @@ export class InstitutionController {
     return this.institutionService.findById(id);
   }
 
+  @Roles(Role.ADMIN, Role.BACKOFFICE)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Patch(':id')
   @ApiOperation({
     summary: 'Atualiza uma instituição pelo ID',
@@ -59,6 +71,8 @@ export class InstitutionController {
     return this.institutionService.update(id, dto);
   }
 
+  @Roles(Role.ADMIN, Role.BACKOFFICE)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({
