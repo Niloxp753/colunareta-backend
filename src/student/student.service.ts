@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { handleError } from 'src/utility/handle-error.utility';
-import { CreateStudentDto } from './dto/create-Student.dto';
+import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { Student } from './entities/student.entity';
 import { StudentRepository } from './student.repository';
