@@ -41,6 +41,11 @@ export class StudentRepository {
         phone: true,
         institutionId: true,
         consult: true,
+        institution:{
+          select:{
+            name: true
+          }
+        }
       },
     });
     return record;
