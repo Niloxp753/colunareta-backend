@@ -6,6 +6,7 @@ import {
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
 import { UserRepository } from './user.repository';
 
@@ -20,9 +21,11 @@ export class UserService {
       }
     }
 
+    delete dto.confirmPassword;
+
     const data: User = {
       ...dto,
-      password: dto.password,
+      password: await bcrypt.hash(dto.password, 10),
       confirmPassword: dto.confirmPassword,
     };
 
