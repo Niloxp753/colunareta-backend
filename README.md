@@ -27,7 +27,8 @@
 <p align="justify">
  Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de alunos, participantes de instituíções vinculadas ao projeto Coluna Reta. Nada mais justo que uma plataforma de interação com o médico responsável pela saúde dos alunos, onde o mesmo pode criar seu usuário, e cadastrar os alunos nas suas respectivas instituíções. Enquanto o admin fica responsável pelo cadastro das instituíções e averiguação dos dados da instituíção, dos médicos e dos alunos.
 
-![Descrição do projeto ColunaReta, onde se tem a plataforma usada pelo médico que irá a campo cadastrar alunos e agendar consultas para os mesmos.]
+Descrição do projeto ColunaReta, onde se tem a plataforma usada pelo médico que irá a campo cadastrar alunos e agendar consultas para os mesmos.
+
   ![c](https://user-images.githubusercontent.com/97872437/186258281-b1baf9ea-beed-4d09-a809-649178abcd3d.png)
 
 </p>
@@ -40,21 +41,11 @@
 
 :heavy_check_mark: `Funcionalidade 3:` Realizar o cadastro de consulta para os alunos cadastrados, atualizar informações dos alunos quando necessário.
 
-## Aplicação
-
-<div align="center">
-
-![Android Emulator]()
-
-  </div>
-
-###
-
 ## Ferramentas utilizadas
 
-<a href="https://www.java.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a>
+<a href="![919832-1](https://user-images.githubusercontent.com/97872437/186260423-f0f99754-ef46-493a-b686-42b6b3819249.png)"> </a>
 
-<a href="https://developer.android.com/studio" target="_blank"> <img src="https://developer.android.com/images/logos/android.svg" alt="androidStudio" width="40" height="40"/> </a> <a href="https://firebase.google.com/?hl=pt" target="_blank"> <img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_96dp.png" alt="firebase" width="40" height="40"/> </a>
+<a href="![aj](https://user-images.githubusercontent.com/97872437/186260661-d90d2189-08fc-457c-a6df-554c40adb712.png)"> <img src="![images-1](https://user-images.githubusercontent.com/97872437/186261211-e0082332-70b8-4847-9d10-41a40ac7c9a2.png)"> </a>
 
 ###
 
