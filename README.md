@@ -43,9 +43,8 @@ Descrição do projeto ColunaReta, onde se tem a plataforma usada pelo médico q
 
 ## Ferramentas utilizadas
 
-<a href="![919832-1](https://user-images.githubusercontent.com/97872437/186260423-f0f99754-ef46-493a-b686-42b6b3819249.png)"> </a>
-
-<a href="![aj](https://user-images.githubusercontent.com/97872437/186260661-d90d2189-08fc-457c-a6df-554c40adb712.png)"> <img src="![images-1](https://user-images.githubusercontent.com/97872437/186261211-e0082332-70b8-4847-9d10-41a40ac7c9a2.png)"> </a>
+![919832-1](https://user-images.githubusercontent.com/97872437/186260423-f0f99754-ef46-493a-b686-42b6b3819249.png)
+![aj](https://user-images.githubusercontent.com/97872437/186260661-d90d2189-08fc-457c-a6df-554c40adb712.png) ![images-1](https://user-images.githubusercontent.com/97872437/186261211-e0082332-70b8-4847-9d10-41a40ac7c9a2.png)
 
 ###
 
