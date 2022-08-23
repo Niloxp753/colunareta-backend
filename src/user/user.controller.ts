@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
@@ -39,8 +40,8 @@ export class UserController {
   @ApiOperation({
     summary: 'Visualiza todos os usuários',
   })
-  findAll() {
-    return this.userService.findAll();
+  findAll(@Query('take') take: string, @Query('skip') skip: string) {
+    return this.userService.findAll(Number(take), Number(skip));
   }
 
   @Roles(Role.ADMIN)

@@ -31,13 +31,15 @@ export class UserService {
     return await this.repository.createUser(data).catch(handleError);
   }
 
-  async findAll(): Promise<User[]> {
-    const userExist = await this.repository.findAllUser();
+  async findAll(take?: number, skip?: number): Promise<User[]> {
+    const userExist = await this.repository
+      .findAllUser(take, skip)
+      .catch(handleError);
 
     if (userExist.length < 0) {
       throw new BadRequestException('Nenhum usuário cadastrado');
     }
-    return await this.repository.findAllUser().catch(handleError);
+    return userExist;
   }
 
   async findById(id: string): Promise<User> {
