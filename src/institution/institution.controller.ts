@@ -8,14 +8,15 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { InstitutionService } from './institution.service';
 // import { UpdateInstitutionDto } from './dto/update-institution.dto';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
-import { AuthGuard } from '@nestjs/passport';
 
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
@@ -44,8 +45,8 @@ export class InstitutionController {
   @ApiOperation({
     summary: 'Lista todas as instituições',
   })
-  findAll() {
-    return this.institutionService.findAll();
+  findAll(@Query('take') take: string, @Query('skip') skip: string) {
+    return this.institutionService.findAll(Number(take), Number(skip));
   }
 
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)

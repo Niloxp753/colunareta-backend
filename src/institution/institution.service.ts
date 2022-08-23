@@ -17,13 +17,15 @@ export class InstitutionService {
     return await this.repository.createInstitution(dto).catch(handleError);
   }
 
-  async findAll(): Promise<Institution[]> {
-    const institutionExist = await this.repository.findAllInstitution();
+  async findAll(take?: number, skip?: number): Promise<Institution[]> {
+    const institutionExist = await this.repository
+      .findAllInstitution(take, skip)
+      .catch(handleError);
 
-    if (institutionExist.length <= 0) {
+    if (institutionExist.length < 0) {
       throw new BadRequestException('Nenhuma instituição cadastrada');
     }
-    return await this.repository.findAllInstitution();
+    return institutionExist;
   }
 
   async findById(id: string): Promise<Institution> {

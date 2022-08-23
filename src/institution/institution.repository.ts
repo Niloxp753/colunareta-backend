@@ -25,8 +25,17 @@ export class InstitutionRepository {
     return PrismaInst;
   }
 
-  async findAllInstitution(): Promise<Institution[]> {
-    const institutionList = await this.prisma.institution.findMany();
+  async findAllInstitution(
+    take?: number,
+    skip?: number,
+  ): Promise<Institution[]> {
+    const institutionList = await this.prisma.institution.findMany({
+      take,
+      skip,
+      orderBy: {
+        name: 'asc',
+      },
+    });
     return institutionList;
   }
 
