@@ -38,7 +38,7 @@ export class StudentsController {
     return this.studantsService.create(createStudentDto);
   }
 
-  @Roles(Role.ADMIN, Role.BACKOFFICE)
+  @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get('find-all')
   @ApiOperation({
