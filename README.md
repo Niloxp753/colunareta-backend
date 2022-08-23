@@ -1,4 +1,4 @@
-![logo_ColunaReta](https://pasteboard.co/fEMThbBf6sry.png)
+![logo_ColunaReta](https://user-images.githubusercontent.com/97872437/186258094-7be2b1ab-3e39-439d-bcd3-1144124ec1d9.png)
 
 <hr>
 
@@ -27,7 +27,9 @@
 <p align="justify">
  Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de alunos, participantes de instituíções vinculadas ao projeto Coluna Reta. Nada mais justo que uma plataforma de interação com o médico responsável pela saúde dos alunos, onde o mesmo pode criar seu usuário, e cadastrar os alunos nas suas respectivas instituíções. Enquanto o admin fica responsável pelo cadastro das instituíções e averiguação dos dados da instituíção, dos médicos e dos alunos.
 
-![Descrição do projeto ColunaReta, onde se tem a plataforma usada pelo médico que irá a campo cadastrar alunos e agendar consultas para os mesmos.](https://pasteboard.co/PVUhFSB7cH7X.png)
+![Descrição do projeto ColunaReta, onde se tem a plataforma usada pelo médico que irá a campo cadastrar alunos e agendar consultas para os mesmos.]
+  ![c](https://user-images.githubusercontent.com/97872437/186258281-b1baf9ea-beed-4d09-a809-649178abcd3d.png)
+
 </p>
 
 ## Funcionalidades
