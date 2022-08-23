@@ -17,10 +17,12 @@ export class StudentsService {
     return await this.repository.createStudent(dto).catch(handleError);
   }
 
-  async findAll(): Promise<Student[]> {
-    const studentExist = await this.repository.findAllStudent();
+  async findAll(take?: number, skip?: number): Promise<Student[]> {
+    const studentExist = await this.repository
+      .findAllStudent(take, skip)
+      .catch(handleError);
 
-    if (studentExist.length <= 0) {
+    if (studentExist.length < 0) {
       throw new BadRequestException('Nenhum aluno cadastrado');
     }
     return studentExist;

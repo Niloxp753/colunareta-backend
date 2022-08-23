@@ -20,8 +20,13 @@ export class StudentRepository {
     return PrismaInst;
   }
 
-  async findAllStudent(): Promise<Student[]> {
+  async findAllStudent(take?: number, skip?: number): Promise<Student[]> {
     const studentList = await this.prisma.student.findMany({
+      take,
+      skip,
+      orderBy: {
+        name: 'asc',
+      },
       include: {
         institution: {
           select: {

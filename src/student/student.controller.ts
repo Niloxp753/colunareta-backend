@@ -8,6 +8,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { StudentsService } from './student.service';
@@ -43,8 +44,8 @@ export class StudentsController {
   @ApiOperation({
     summary: 'Lista todos os alunos cadastrados',
   })
-  findAll() {
-    return this.studantsService.findAll();
+  findAll(@Query('take') take: string, @Query('skip') skip: string) {
+    return this.studantsService.findAll(Number(take), Number(skip));
   }
 
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
