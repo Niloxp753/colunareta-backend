@@ -58,7 +58,6 @@ Ou então, pode ir direto para a aplicação do [SWAGGER]().
 
 ## Desenvolvedores
 
-| ![Foto Alex1](https://user-images.githubusercontent.com/97872437/186533190-21f441d9-d0cc-4e1a-a827-72d275ab7299.jpg)
-[<sub>Alex Faria</sub>](https://github.com/AlexFariaa) | ![kb](https://user-images.githubusercontent.com/97872437/186534479-5ca92ee5-52f0-4eee-a4ca-7b895d4e4348.jpg)
-[<sub>Kellbber Barcarolo</sub>](https://github.com/Kellbber) |
+| [![kb](https://user-images.githubusercontent.com/97872437/186535034-b0476853-7ceb-4f7f-afe3-ced7b361c8ca.jpg)<sub>Kellbber Bacarolo</sub>](https://github.com/Kellbber) |  [<img src="https://avatars.githubusercontent.com/u/38091359?v=4" width=115><br><sub>Clóvis Ribeiro Júnior</sub>](https://github.com/crovim) |  [<img src="https://avatars.githubusercontent.com/u/37315196?v=4" width=115><br><sub>Guilherme Rossin</sub>](https://github.com/GuilhermeRossin) | [<img src="https://avatars.githubusercontent.com/u/21059035?v=4" width=115><br><sub>Erica Muniz</sub>](https://github.com/Erica08muniz) |
+| :---: | :---: | :---: | :---: 
 
