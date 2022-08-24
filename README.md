@@ -59,5 +59,6 @@ Ou então, pode ir direto para a aplicação do [SWAGGER]().
 ## Desenvolvedores
 
 | ![Foto Alex1](https://user-images.githubusercontent.com/97872437/186533190-21f441d9-d0cc-4e1a-a827-72d275ab7299.jpg) 
-[Alex Faria](https://github.com/AlexFariaa) |
+
+[<sub>Alex Faria</sub>](https://github.com/AlexFariaa) |
 | :---: | :---: | :---: | :---:
