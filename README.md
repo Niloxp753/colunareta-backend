@@ -48,7 +48,7 @@ Descrição do projeto ColunaReta, onde se tem a plataforma usada pelo médico q
 
 ## Acesso ao projeto
 
-Você pode [acessar o código fonte do projeto](https://github.com/Kellbber/BTC--equipe-01--backend)
+Você pode [acessar o código fonte do projeto](https://github.com/Kellbber/BTC--equipe-01--backend).
 
 ## Abrir e rodar o projeto
 
@@ -58,7 +58,7 @@ Ou então, pode ir direto para a aplicação do [SWAGGER]().
 
 ## Desenvolvedores
 
-| ![kb](https://user-images.githubusercontent.com/97872437/186535034-b0476853-7ceb-4f7f-afe3-ced7b361c8ca.jpg)
-[<sub>Kellbber Bacarolo</sub>](https://github.com/Kellbber) |  [<img src="https://avatars.githubusercontent.com/u/38091359?v=4" width=115><br><sub>Clóvis Ribeiro Júnior</sub>](https://github.com/crovim) |  [<img src="https://avatars.githubusercontent.com/u/37315196?v=4" width=115><br><sub>Guilherme Rossin</sub>](https://github.com/GuilhermeRossin) | [<img src="https://avatars.githubusercontent.com/u/21059035?v=4" width=115><br><sub>Erica Muniz</sub>](https://github.com/Erica08muniz) |
-| :---: | :---: | :---: | :---: 
-
+| ![kb](https://user-images.githubusercontent.com/97872437/186535034-b0476853-7ceb-4f7f-afe3-ced7b361c8ca.jpg) | ![Foto Alex1](https://user-images.githubusercontent.com/97872437/186535832-7d390f56-b346-4b15-add2-9f76af832e00.jpg) | ![gabis](https://user-images.githubusercontent.com/97872437/186536402-b95e1787-f57a-4f8d-9ed6-bcc536fcf9be.jpg) | ![danilo](https://user-images.githubusercontent.com/97872437/186536852-9857bcf4-942c-434a-9f5e-98a16aee2f68.jpg) | ![eu](https://user-images.githubusercontent.com/97872437/186537635-fa4609fa-6c92-4d35-97a0-b8b435b7c7be.jpg) | 
+| :---: | :---: | :---: | :---: | :---:
+[<sub>Kellbber Bacarolo</sub>](https://github.com/Kellbber) | [<sub>Alex Faria</sub>](https://github.com/AlexFariaa) | [<sub>Gabriel Henrique</sub>](https://github.com/GabrielDevXD) | [<sub>Danilo Diniz</sub>](https://github.com/Niloxp753) | [<sub>Danilo Alves</sub>](https://github.com/ddanilooalves)
+[LinkedIn](https://www.linkedin.com/in/kellbber-barcarolo-71a848230/) | [LinkedIn](https://www.linkedin.com/in/alex-afaria/) | [LinkedIn](https://www.linkedin.com/in/gabrieldevxd/) | [LinkedIn](https://www.linkedin.com/in/danilo-diniz-dos-santos-7034b8136/) | [LinkedIn](https://www.linkedin.com/in/danilo-alves-de-aguiar-06832622b/)
