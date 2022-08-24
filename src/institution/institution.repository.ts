@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { FindInstitutionModel } from './dto/findInstitutionModel.dto';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
 import { Institution } from './entities/institution.entity';
 
@@ -25,18 +26,18 @@ export class InstitutionRepository {
     return PrismaInst;
   }
 
-  async findAllInstitution(
-    take?: number,
-    skip?: number,
-  ): Promise<Institution[]> {
+  async findAllInstitution(page: number): Promise<FindInstitutionModel> {
+    const countInstitution = await this.prisma.institution.count();
+    const totalPages = Math.ceil(countInstitution / 20);
+    const skip = (page - 1) * 20;
     const institutionList = await this.prisma.institution.findMany({
-      take,
-      skip,
+      take: 20,
+      skip: skip,
       orderBy: {
         name: 'asc',
       },
     });
-    return institutionList;
+    return { institutions: institutionList, totalPages: totalPages };
   }
 
   async findByInstitutionId(id: string): Promise<Institution> {

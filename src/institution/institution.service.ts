@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
+import { FindInstitutionModel } from './dto/findInstitutionModel.dto';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
 import { Institution } from './entities/institution.entity';
 import { InstitutionRepository } from './institution.repository';
@@ -17,12 +18,12 @@ export class InstitutionService {
     return await this.repository.createInstitution(dto).catch(handleError);
   }
 
-  async findAll(take?: number, skip?: number): Promise<Institution[]> {
+  async findAll(page: number): Promise<FindInstitutionModel> {
     const institutionExist = await this.repository
-      .findAllInstitution(take, skip)
+      .findAllInstitution(page)
       .catch(handleError);
 
-    if (institutionExist.length < 0) {
+    if (institutionExist.institutions.length < 0) {
       throw new BadRequestException('Nenhuma instituição cadastrada');
     }
     return institutionExist;

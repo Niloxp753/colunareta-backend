@@ -43,10 +43,10 @@ export class InstitutionController {
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get('find-all')
   @ApiOperation({
-    summary: 'Lista todas as instituições',
+    summary: 'Lista todas as instituições de forma ordenada e paginada',
   })
-  findAll(@Query('take') take: string, @Query('skip') skip: string) {
-    return this.institutionService.findAll(Number(take), Number(skip));
+  findAll(@Query('page') page: string) {
+    return this.institutionService.findAll(Number(page));
   }
 
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
