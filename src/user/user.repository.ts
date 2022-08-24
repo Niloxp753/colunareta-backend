@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { count } from 'console';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { FindUserModel } from './dto/findUserModel.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 
@@ -20,15 +22,18 @@ export class UserRepository {
     return PrismaInst;
   }
 
-  async findAllUser(take?: number, skip?: number): Promise<User[]> {
+  async findAllUser(page: number): Promise<FindUserModel> {
+    const countUser = await this.prisma.user.count();
+    const totalPages = Math.ceil(countUser / 20);
+    const skip = (page - 1) * 20;
     const userList = await this.prisma.user.findMany({
-      take,
-      skip,
+      take: 20,
+      skip: skip,
       orderBy: {
         name: 'asc',
       },
     });
-    return userList;
+    return { users: userList, totalPages: totalPages };
   }
 
   async findByUserId(id: string): Promise<User> {

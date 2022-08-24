@@ -9,6 +9,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
 import { UserRepository } from './user.repository';
+import { FindUserModel } from './dto/findUserModel.dto';
 
 @Injectable()
 export class UserService {
@@ -31,12 +32,12 @@ export class UserService {
     return await this.repository.createUser(data).catch(handleError);
   }
 
-  async findAll(take?: number, skip?: number): Promise<User[]> {
+  async findAll(page: number): Promise<FindUserModel> {
     const userExist = await this.repository
-      .findAllUser(take, skip)
+      .findAllUser(page)
       .catch(handleError);
 
-    if (userExist.length < 0) {
+    if (userExist.users.length < 0) {
       throw new BadRequestException('Nenhum usuário cadastrado');
     }
     return userExist;

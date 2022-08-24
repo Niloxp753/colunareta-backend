@@ -38,10 +38,10 @@ export class UserController {
   @Get('find-all')
   @ApiBearerAuth()
   @ApiOperation({
-    summary: 'Visualiza todos os usuários',
+    summary: 'Lista todos os usuários de forma ordenada e paginada',
   })
-  findAll(@Query('take') take: string, @Query('skip') skip: string) {
-    return this.userService.findAll(Number(take), Number(skip));
+  findAll(@Query('page') page: string) {
+    return this.userService.findAll(Number(page));
   }
 
   @Roles(Role.ADMIN)
@@ -50,13 +50,13 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
   @ApiOperation({
-    summary: 'Localiza o usuário pelo ID',
+    summary: 'Visualiza o usuário pelo ID',
   })
   findOne(@Param('id') id: string) {
     return this.userService.findById(id);
   }
 
-  @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
+  @Roles(Role.ADMIN)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'))
