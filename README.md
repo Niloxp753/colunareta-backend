@@ -58,5 +58,6 @@ Ou então, pode ir direto para a aplicação do [SWAGGER]().
 
 ## Desenvolvedores
 
-| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Camila Fernanda Alves</sub>](https://github.com/camilafernanda) |  [<img src="https://avatars.githubusercontent.com/u/38091359?v=4" width=115><br><sub>Clóvis Ribeiro Júnior</sub>](https://github.com/crovim) |  [<img src="https://avatars.githubusercontent.com/u/37315196?v=4" width=115><br><sub>Guilherme Rossin</sub>](https://github.com/GuilhermeRossin) | [<img src="https://avatars.githubusercontent.com/u/21059035?v=4" width=115><br><sub>Erica Muniz</sub>](https://github.com/Erica08muniz) |
+| [![Foto Alex1](https://user-images.githubusercontent.com/97872437/186533190-21f441d9-d0cc-4e1a-a827-72d275ab7299.jpg)
+<sub>Alex Faria</sub>](https://github.com/camilafernanda) |  [<img src="https://avatars.githubusercontent.com/u/38091359?v=4" width=115><br><sub>Clóvis Ribeiro Júnior</sub>](https://github.com/crovim) |  [<img src="https://avatars.githubusercontent.com/u/37315196?v=4" width=115><br><sub>Guilherme Rossin</sub>](https://github.com/GuilhermeRossin) | [<img src="https://avatars.githubusercontent.com/u/21059035?v=4" width=115><br><sub>Erica Muniz</sub>](https://github.com/Erica08muniz) |
 | :---: | :---: | :---: | :---:
