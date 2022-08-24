@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { FindStudentModel } from './dto/findStudentModel.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { Student } from './entities/student.entity';
 
@@ -20,10 +21,13 @@ export class StudentRepository {
     return PrismaInst;
   }
 
-  async findAllStudent(take?: number, skip?: number): Promise<Student[]> {
+  async findAllStudent(page: number): Promise<FindStudentModel> {
+    const countStudent = await this.prisma.student.count();
+    const totalPages = Math.ceil(countStudent / 20);
+    const skip = (page - 1) * 20;
     const studentList = await this.prisma.student.findMany({
-      take,
-      skip,
+      take: 20,
+      skip: skip,
       orderBy: {
         name: 'asc',
       },
@@ -35,7 +39,32 @@ export class StudentRepository {
         },
       },
     });
-    return studentList;
+    return { students: studentList, totalPages: totalPages };
+  }
+
+  async findAllFilterStudent(
+    page: number,
+    search?: string,
+  ): Promise<FindStudentModel> {
+    const countStudent = await this.prisma.student.count();
+    const totalPages = Math.ceil(countStudent / 20);
+    const skip = (page - 1) * 20;
+    const studentListInstitution = (
+      await this.prisma.student.findMany({
+        where: {
+          institutionId: search,
+        },
+        take: 20,
+        skip: skip,
+        orderBy: {
+          name: 'asc',
+        },
+      })
+    ).filter((student) => student.institutionId.includes(search));
+    return {
+      students: studentListInstitution,
+      totalPages: totalPages,
+    };
   }
 
   async findByStudentId(id: string): Promise<Student> {

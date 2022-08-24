@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateStudentDto } from './dto/create-student.dto';
+import { FindStudentModel } from './dto/findStudentModel.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { Student } from './entities/student.entity';
 import { StudentRepository } from './student.repository';
@@ -17,12 +18,26 @@ export class StudentsService {
     return await this.repository.createStudent(dto).catch(handleError);
   }
 
-  async findAll(take?: number, skip?: number): Promise<Student[]> {
+  async findAll(page: number): Promise<FindStudentModel> {
     const studentExist = await this.repository
-      .findAllStudent(take, skip)
+      .findAllStudent(page)
       .catch(handleError);
 
-    if (studentExist.length < 0) {
+    if (studentExist.students.length < 0) {
+      throw new BadRequestException('Nenhum aluno cadastrado');
+    }
+    return studentExist;
+  }
+
+  async findAllFilter(
+    page: number,
+    search?: string,
+  ): Promise<FindStudentModel> {
+    const studentExist = await this.repository
+      .findAllFilterStudent(page, search)
+      .catch(handleError);
+
+    if (studentExist.students.length < 0) {
       throw new BadRequestException('Nenhum aluno cadastrado');
     }
     return studentExist;

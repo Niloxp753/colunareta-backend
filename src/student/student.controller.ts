@@ -44,8 +44,19 @@ export class StudentsController {
   @ApiOperation({
     summary: 'Lista todos os alunos cadastrados',
   })
-  findAll(@Query('take') take: string, @Query('skip') skip: string) {
-    return this.studantsService.findAll(Number(take), Number(skip));
+  findAll(@Query('page') page: string) {
+    return this.studantsService.findAll(Number(page));
+  }
+
+  @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Get('find-all-filter')
+  @ApiOperation({
+    summary:
+      'Lista os alunos de forma ordenada filtrando pelo ID da instituição',
+  })
+  findAllFilter(@Query('page') page: string, @Query('search') search: string) {
+    return this.studantsService.findAllFilter(Number(page), String(search));
   }
 
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
