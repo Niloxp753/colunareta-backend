@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { count } from 'console';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { FindUserModel } from './dto/findUserModel.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
