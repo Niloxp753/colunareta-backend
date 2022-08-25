@@ -40,6 +40,14 @@ export class InstitutionRepository {
     return { institutions: institutionList, totalPages: totalPages };
   }
 
+  async findAllInstNoPaged(): Promise<Institution[]>{
+    const institutionList = await this.prisma.institution.findMany({
+      orderBy:{
+        name: 'asc',
+      }
+    });
+    return institutionList;
+  }
   async findByInstitutionId(id: string): Promise<Institution> {
     const record = await this.prisma.institution.findUnique({
       where: { id },
