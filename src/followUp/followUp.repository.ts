@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
+import { FindFollowUpModel } from './dto/findFollowUpModel.dto';
 import { UpdateFollowUpDto } from './dto/update-followUp.dto';
 import { FollowUp } from './entities/followUp.entity';
 @Injectable()
@@ -25,9 +26,20 @@ export class FollowUpRepository {
     return PrismaInst;
   }
 
-  async findAllFollowUp(): Promise<FollowUp[]> {
-    const followUpList = await this.prisma.followUp.findMany();
-    return followUpList;
+  async findAllFollowUp(page: number): Promise<FindFollowUpModel> {
+    const countFollowUp = await this.prisma.followUp.count();
+    const totalPages = Math.ceil(countFollowUp / 20);
+    const skip = (page - 1) * 20;
+    const followUpList = await this.prisma.followUp.findMany({
+      take: 20,
+      skip: skip,
+      orderBy: {
+        students: {
+          name: 'asc',
+        },
+      },
+    });
+    return { followUps: followUpList, totalPages: totalPages };
   }
 
   async findByFollowUpId(id: string): Promise<FollowUp> {

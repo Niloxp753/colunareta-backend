@@ -8,6 +8,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
@@ -42,8 +43,8 @@ export class FollowUpController {
   @ApiOperation({
     summary: 'Lista todos os acompanhamentos cadastrados',
   })
-  findAll() {
-    return this.followUpService.findAll();
+  findAll(@Query('page') page: string) {
+    return this.followUpService.findAll(Number(page));
   }
 
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)

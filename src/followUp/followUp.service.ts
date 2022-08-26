@@ -8,6 +8,7 @@ import { FollowUpRepository } from './followUp.repository';
 import { CreateFollowUpDto } from './dto/create-followUp.dto';
 import { UpdateFollowUpDto } from './dto/update-followUp.dto';
 import { FollowUp } from './entities/followUp.entity';
+import { FindFollowUpModel } from './dto/findFollowUpModel.dto';
 
 @Injectable()
 export class FollowUpService {
@@ -17,11 +18,11 @@ export class FollowUpService {
     return await this.repository.createFollowUp(dto).catch(handleError);
   }
 
-  async findAll(): Promise<FollowUp[]> {
-    const followUpExist = await this.repository.findAllFollowUp();
+  async findAll(page: number): Promise<FindFollowUpModel> {
+    const followUpExist = await this.repository.findAllFollowUp(page);
 
-    if (followUpExist.length <= 0) {
-      throw new BadRequestException('Nenhuma consulta cadastrado');
+    if (followUpExist.followUps.length <= 0) {
+      throw new BadRequestException('Nenhum acompanhamento cadastrado');
     }
     return followUpExist;
   }
