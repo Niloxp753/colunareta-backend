@@ -48,7 +48,15 @@ export class InstitutionController {
   findAll(@Query('page') page: string) {
     return this.institutionService.findAll(Number(page));
   }
-
+  @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Get('find-all-no-paged')
+  @ApiOperation({
+    summary: 'Lista todas as instituições de forma normal',
+  })
+  findAllInstNoPaged() {
+    return this.institutionService.findAllInstNoPaged();
+  }
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get(':id')
