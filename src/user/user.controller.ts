@@ -191,7 +191,7 @@ export class UserController {
   @Patch('email/:id')
   @ApiBearerAuth()
   @ApiOperation({
-    summary: 'Atualiza o usuário pelo ID',
+    summary: 'Atualiza o usuário pelo ID recebido pelo email',
   })
   updateEmail(@Param('id') id: string, @Body() dto: UpdateUserDto) {
     return this.userService.update(id, dto);
