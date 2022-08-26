@@ -29,9 +29,10 @@ export class InstitutionService {
     return institutionExist;
   }
 
-  async findAllInstNoPaged(): Promise<Institution[]>{
-    const institutionExist = await this.repository.findAllInstNoPaged()
-    .catch(handleError);
+  async findAllInstNoPaged(): Promise<Institution[]> {
+    const institutionExist = await this.repository
+      .findAllInstNoPaged()
+      .catch(handleError);
     return institutionExist;
   }
 
