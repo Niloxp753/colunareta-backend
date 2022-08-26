@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
-import { UpdateConsultDto } from './dto/update-consult.dto';
-import { Consult } from './entities/consult.entity';
+import { UpdateFollowUpDto } from './dto/update-followUp.dto';
+import { FollowUp } from './entities/followUp.entity';
 @Injectable()
-export class ConsultRepository {
+export class FollowUpRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async createConsult(data: Consult): Promise<Consult> {
-    const PrismaInst = await this.prisma.consult
+  async createFollowUp(data: FollowUp): Promise<FollowUp> {
+    const PrismaInst = await this.prisma.followUp
       .create({
         data: {
           id: data.id,
@@ -21,13 +21,13 @@ export class ConsultRepository {
     return PrismaInst;
   }
 
-  async findAllConsult(): Promise<Consult[]> {
-    const consultList = await this.prisma.consult.findMany();
-    return consultList;
+  async findAllFollowUp(): Promise<FollowUp[]> {
+    const followUpList = await this.prisma.followUp.findMany();
+    return followUpList;
   }
 
-  async findByConsultId(id: string): Promise<Consult> {
-    const record = await this.prisma.consult.findUnique({
+  async findByFollowUpId(id: string): Promise<FollowUp> {
+    const record = await this.prisma.followUp.findUnique({
       where: { id },
       select: {
         id: true,
@@ -47,16 +47,16 @@ export class ConsultRepository {
     return record;
   }
 
-  async updateConsult(id: string, data: UpdateConsultDto): Promise<Consult> {
-    const consultas = await this.prisma.consult.update({
+  async updateFollowUp(id: string, data: UpdateFollowUpDto): Promise<FollowUp> {
+    const followUp = await this.prisma.followUp.update({
       where: { id },
       data,
     });
-    return consultas;
+    return followUp;
   }
 
-  async deleteConsult(id: string): Promise<Consult> {
-    return await this.prisma.consult.delete({
+  async deleteFollowUp(id: string): Promise<FollowUp> {
+    return await this.prisma.followUp.delete({
       where: { id },
     });
   }

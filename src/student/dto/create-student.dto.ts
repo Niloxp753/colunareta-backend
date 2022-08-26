@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
-import { Consult } from 'src/consult/entities/consult.entity';
+import { FollowUp } from 'src/followUp/entities/followUp.entity';
 import { Student } from '../entities/student.entity';
 
 export class CreateStudentDto implements Student {
@@ -34,5 +34,5 @@ export class CreateStudentDto implements Student {
   })
   institutionId: string;
 
-  consult?: Consult[];
+  consult?: FollowUp[];
 }

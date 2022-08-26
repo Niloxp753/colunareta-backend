@@ -1,4 +1,4 @@
-import { Consult } from 'src/consult/entities/consult.entity';
+import { FollowUp } from 'src/followUp/entities/followUp.entity';
 
 export class Student {
   id?: string;
@@ -6,5 +6,5 @@ export class Student {
   age: string;
   phone?: string;
   institutionId: string;
-  consult?: Consult[];
+  consult?: FollowUp[];
 }

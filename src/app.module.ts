@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConsultModule } from './consult/consult.module';
+import { ConsultModule } from './followUp/followUp.module';
 import { InstitutionModule } from './institution/institution.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { StudentsModule } from './student/student.module';

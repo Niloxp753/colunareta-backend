@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
-import { Consult } from '../entities/consult.entity';
+import { FollowUp } from '../entities/followUp.entity';
 
-export class CreateConsultDto implements Consult {
+export class CreateFollowUpDto implements FollowUp {
   id?: string;
 
   @IsString()

@@ -15,16 +15,17 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { Role } from 'src/auth/models/role.enum';
-import { ConsultService } from './consult.service';
-import { CreateConsultDto } from './dto/create-consult.dto';
-import { UpdateConsultDto } from './dto/update-consult.dto';
 
-@ApiTags('consults')
+import { CreateFollowUpDto } from './dto/create-followUp.dto';
+import { UpdateFollowUpDto } from './dto/update-followUp.dto';
+import { FollowUpService } from './followUp.service';
+
+@ApiTags('followUps')
 @UseGuards(AuthGuard('jwt'))
 @ApiBearerAuth()
-@Controller('consult')
-export class ConsultController {
-  constructor(private readonly consultService: ConsultService) {}
+@Controller('followUp')
+export class FollowUpController {
+  constructor(private readonly followUpService: FollowUpService) {}
 
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
@@ -32,8 +33,8 @@ export class ConsultController {
   @ApiOperation({
     summary: 'Cria uma nova consulta',
   })
-  create(@Body() createConsultDto: CreateConsultDto) {
-    return this.consultService.create(createConsultDto);
+  create(@Body() createFollowUpDto: CreateFollowUpDto) {
+    return this.followUpService.create(createFollowUpDto);
   }
   @Roles(Role.ADMIN, Role.BACKOFFICE)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
@@ -42,7 +43,7 @@ export class ConsultController {
     summary: 'Lista todas as consultas cadastradas',
   })
   findAll() {
-    return this.consultService.findAll();
+    return this.followUpService.findAll();
   }
 
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
@@ -52,7 +53,7 @@ export class ConsultController {
     summary: 'Visualiza uma consulta pelo ID',
   })
   findOne(@Param('id') id: string) {
-    return this.consultService.findById(id);
+    return this.followUpService.findById(id);
   }
 
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
@@ -61,8 +62,8 @@ export class ConsultController {
   @ApiOperation({
     summary: 'Atualiza uma consulta pelo ID',
   })
-  update(@Param('id') id: string, @Body() dto: UpdateConsultDto) {
-    return this.consultService.update(id, dto);
+  update(@Param('id') id: string, @Body() dto: UpdateFollowUpDto) {
+    return this.followUpService.update(id, dto);
   }
 
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
@@ -73,6 +74,6 @@ export class ConsultController {
     summary: 'Deleta uma consulta pelo ID',
   })
   delete(@Param('id') id: string) {
-    return this.consultService.delete(id);
+    return this.followUpService.delete(id);
   }
 }
