@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { randomUUID } from 'crypto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { FindUserModel } from './dto/findUserModel.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -11,7 +12,7 @@ export class UserRepository {
   async createUser(data: User): Promise<User> {
     const PrismaInst = await this.prisma.user.create({
       data: {
-        id: data.id,
+        id: randomUUID(),
         name: data.name,
         email: data.email,
         password: data.password,
