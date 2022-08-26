@@ -65,6 +65,20 @@ export class UserService {
     return this.repository.updateUser(id, data).catch(handleError);
   }
 
+  async updateEmail(id: string, dto: UpdateUserDto): Promise<User> {
+    await this.repository.findByUserId(id).catch(handleError);
+
+    if (dto.password) {
+      if (dto.password === dto.confirmPassword) {
+        throw new BadRequestException('As senhas informadas não são iguais');
+      }
+    }
+
+    const data: Partial<User> = { ...dto };
+
+    return this.repository.updateUser(id, data).catch(handleError);
+  }
+
   async delete(id: string): Promise<User> {
     const record = await this.repository.deleteUser(id).catch(handleError);
     if (!record) {

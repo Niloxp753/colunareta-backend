@@ -7,6 +7,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { StudentsModule } from './student/student.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { MailerModule } from '@nestjs-modules/mailer';
 
 @Module({
   imports: [
@@ -16,6 +17,18 @@ import { AuthModule } from './auth/auth.module';
     StudentsModule,
     FollowUpModule,
     AuthModule,
+    MailerModule.forRoot({
+      transport: {
+        host: 'smtp.mailgun.org',
+        port: 587,
+        ignoreTLS: true,
+        secure: false,
+        auth: {
+          user: process.env.MAILDEV_INCOMING_USER,
+          pass: process.env.MAILDEV_INCOMING_PASS,
+        },
+      },
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
