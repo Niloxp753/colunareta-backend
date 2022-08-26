@@ -31,7 +31,7 @@ export class FollowUpController {
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Post()
   @ApiOperation({
-    summary: 'Cria uma nova consulta',
+    summary: 'Cadastra um novo acompanhamento',
   })
   create(@Body() createFollowUpDto: CreateFollowUpDto) {
     return this.followUpService.create(createFollowUpDto);
@@ -40,7 +40,7 @@ export class FollowUpController {
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get('find-all')
   @ApiOperation({
-    summary: 'Lista todas as consultas cadastradas',
+    summary: 'Lista todos os acompanhamentos cadastrados',
   })
   findAll() {
     return this.followUpService.findAll();
@@ -50,7 +50,7 @@ export class FollowUpController {
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get(':id')
   @ApiOperation({
-    summary: 'Visualiza uma consulta pelo ID',
+    summary: 'Visualiza um acompanhamento pelo ID',
   })
   findOne(@Param('id') id: string) {
     return this.followUpService.findById(id);
@@ -60,7 +60,7 @@ export class FollowUpController {
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Patch(':id')
   @ApiOperation({
-    summary: 'Atualiza uma consulta pelo ID',
+    summary: 'Atualiza um acompanhamento pelo ID',
   })
   update(@Param('id') id: string, @Body() dto: UpdateFollowUpDto) {
     return this.followUpService.update(id, dto);
@@ -71,7 +71,7 @@ export class FollowUpController {
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({
-    summary: 'Deleta uma consulta pelo ID',
+    summary: 'Deleta um acompanhamento pelo ID',
   })
   delete(@Param('id') id: string) {
     return this.followUpService.delete(id);
