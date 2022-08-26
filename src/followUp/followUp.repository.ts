@@ -34,9 +34,7 @@ export class FollowUpRepository {
       take: 20,
       skip: skip,
       orderBy: {
-        students: {
-          name: 'asc',
-        },
+        startDate: 'asc',
       },
     });
     return { followUps: followUpList, totalPages: totalPages };
