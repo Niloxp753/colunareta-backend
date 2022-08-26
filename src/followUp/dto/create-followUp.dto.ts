@@ -8,18 +8,50 @@ export class CreateFollowUpDto implements FollowUp {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    description: 'Data das consultas',
+    description: 'Data de inicio do acompanhamento',
     example: '26/05/2022',
   })
-  schedule: string;
+  startDate: string;
 
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    description: 'Horário das consultas',
-    example: '13:00',
+    description: 'Primeira foto do acompanhamento via link',
+    example: 'https://placeimg.com/640/480/any',
   })
-  hour: string;
+  firstPhoto: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    description: 'Segunda foto do acompanhamento via link',
+    example: 'https://placeimg.com/640/480/any',
+  })
+  secondPhoto: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    description: 'Data de retorno do acompanhamento',
+    example: '26/06/2022',
+  })
+  returnDate: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    description: 'Observações sobre o acompanhamento',
+    example: 'Os ombros ou os quadris se mostram assimétricos',
+  })
+  note: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    description: 'Encaminhamento do aluno para as áreas responsáveis',
+    example: 'Fisioterapia',
+  })
+  forwarding: string[];
 
   @IsString()
   @IsNotEmpty()

@@ -47,21 +47,25 @@ model Student {
   phone         String
   institutionId String
   institution   Institution @relation(fields: [institutionId], references: [id])
-  consult       Consult[]
+  followUp      FollowUp[]
 
   @@map("studant")
 }
 
-model Consult {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  hour      String
-  schedule  String
-  studentId String
-  students  Student  @relation(fields: [studentId], references: [id])
+model FollowUp {
+  id          String   @id @default(uuid())
+  startDate   String
+  firstPhoto  String
+  secondPhoto String
+  returnDate  String
+  note        String?
+  studentId   String
+  forwarding  String[]
+  students    Student  @relation(fields: [studentId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  @@map("consult")
+  @@map("followUp")
 }
 
 enum Role {

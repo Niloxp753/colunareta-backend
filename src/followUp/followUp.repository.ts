@@ -12,8 +12,12 @@ export class FollowUpRepository {
       .create({
         data: {
           id: data.id,
-          schedule: data.schedule,
-          hour: data.hour,
+          firstPhoto: data.firstPhoto,
+          secondPhoto: data.secondPhoto,
+          note: data.note,
+          startDate: data.startDate,
+          returnDate: data.returnDate,
+          forwarding: data.forwarding,
           studentId: data.studentId,
         },
       })
@@ -31,8 +35,12 @@ export class FollowUpRepository {
       where: { id },
       select: {
         id: true,
-        schedule: true,
-        hour: true,
+        firstPhoto: true,
+        secondPhoto: true,
+        startDate: true,
+        returnDate: true,
+        note: true,
+        forwarding: true,
         studentId: true,
         students: {
           select: {

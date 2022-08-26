@@ -9,4 +9,4 @@ import { FollowUpRepository } from './followUp.repository';
   controllers: [FollowUpController],
   providers: [FollowUpService, FollowUpRepository],
 })
-export class ConsultModule {}
+export class FollowUpModule {}

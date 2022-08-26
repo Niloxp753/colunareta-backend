@@ -76,7 +76,7 @@ export class StudentRepository {
         age: true,
         phone: true,
         institutionId: true,
-        consult: true,
+        followUp: true,
         institution: {
           select: {
             name: true,
