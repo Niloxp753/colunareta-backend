@@ -23,7 +23,7 @@ import { FollowUpService } from './followUp.service';
 @ApiTags('followUps')
 @UseGuards(AuthGuard('jwt'))
 @ApiBearerAuth()
-@Controller('followUp')
+@Controller('followUps')
 export class FollowUpController {
   constructor(private readonly followUpService: FollowUpService) {}
 
