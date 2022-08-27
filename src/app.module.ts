@@ -5,7 +5,6 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { EmailController } from './email.controller';
 import { FollowUpModule } from './followUp/followUp.module';
 import { InstitutionModule } from './institution/institution.module';
 import { PrismaModule } from './prisma/prisma.module';
@@ -36,7 +35,7 @@ import { UserModule } from './user/user.module';
       },
     }),
   ],
-  controllers: [AppController, EmailController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

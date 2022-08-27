@@ -14,6 +14,7 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { Role } from 'src/auth/models/role.enum';
+import { EmailService } from 'src/mails/email.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
@@ -21,14 +22,19 @@ import { UserService } from './user.service';
 @ApiTags('users')
 @Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private mailService: EmailService,
+  ) {}
 
   @ApiOperation({
     summary: 'Cria um novo usuário',
   })
   @Post('create')
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto) {
+    const userCreate = await this.userService.create(createUserDto);
+    await this.mailService.sendEmail(userCreate);
+    return userCreate;
   }
 
   @Roles(Role.ADMIN)
