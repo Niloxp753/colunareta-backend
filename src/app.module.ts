@@ -1,13 +1,16 @@
+import { MailerModule } from '@nestjs-modules/mailer';
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { Module } from '@nestjs/common';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { EmailController } from './email.controller';
 import { FollowUpModule } from './followUp/followUp.module';
 import { InstitutionModule } from './institution/institution.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { StudentsModule } from './student/student.module';
 import { UserModule } from './user/user.module';
-import { AuthModule } from './auth/auth.module';
-import { MailerModule } from '@nestjs-modules/mailer';
 
 @Module({
   imports: [
@@ -22,15 +25,18 @@ import { MailerModule } from '@nestjs-modules/mailer';
         host: 'smtp.mailgun.org',
         port: 587,
         ignoreTLS: true,
-        secure: false,
         auth: {
           user: process.env.MAILDEV_INCOMING_USER,
           pass: process.env.MAILDEV_INCOMING_PASS,
         },
       },
+      template: {
+        dir: join(__dirname, 'mails'),
+        adapter: new HandlebarsAdapter(),
+      },
     }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, EmailController],
   providers: [AppService],
 })
 export class AppModule {}
