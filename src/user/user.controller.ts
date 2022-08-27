@@ -30,7 +30,6 @@ export class UserController {
   @ApiOperation({
     summary: 'Cria um novo usuário',
   })
-  @UseGuards(AuthGuard('jwt'))
   @Post('create')
   async create(@Body() createUserDto: CreateUserDto) {
     const userCreate = await this.userService.create(createUserDto);
