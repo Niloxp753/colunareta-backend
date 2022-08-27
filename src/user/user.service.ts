@@ -25,7 +25,7 @@ export class UserService {
     const data: User = {
       ...dto,
       password: await bcrypt.hash(dto.password, 10),
-      confirmPassword: dto.confirmPassword,
+      confirmPassword: await bcrypt.hash(dto.confirmPassword, 10),
     };
 
     delete dto.confirmPassword;
@@ -60,7 +60,13 @@ export class UserService {
       }
     }
 
-    const data: Partial<User> = { ...dto };
+    const data: Partial<User> = {
+      ...dto,
+      password: await bcrypt.hash(dto.password, 10),
+      confirmPassword: await bcrypt.hash(dto.confirmPassword, 10),
+    };
+
+    delete dto.confirmPassword;
 
     return this.repository.updateUser(id, data).catch(handleError);
   }
