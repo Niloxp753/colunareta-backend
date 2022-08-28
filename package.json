@@ -1,9 +1,9 @@
 {
-  "name": "BTC--equipe-01--backend",
+  "name": "coluna-reta",
   "version": "0.0.1",
   "description": "",
   "author": "",
-  "private": true,
+  "private": false,
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
