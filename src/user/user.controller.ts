@@ -70,7 +70,7 @@ export class UserController {
     return this.userService.update(id, dto);
   }
 
-  @Patch('email/:id')
+  @Patch('users/email/:id')
   @ApiOperation({
     summary: 'Atualiza o usuário pelo ID recebido pelo email',
   })
