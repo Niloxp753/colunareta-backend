@@ -37,6 +37,7 @@ export class FollowUpController {
   create(@Body() createFollowUpDto: CreateFollowUpDto) {
     return this.followUpService.create(createFollowUpDto);
   }
+
   @Roles(Role.ADMIN, Role.BACKOFFICE)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get('find-all')

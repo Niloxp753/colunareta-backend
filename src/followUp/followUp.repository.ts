@@ -9,20 +9,18 @@ export class FollowUpRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async createFollowUp(data: FollowUp): Promise<FollowUp> {
-    const PrismaInst = await this.prisma.followUp
-      .create({
-        data: {
-          id: data.id,
-          firstPhoto: data.firstPhoto,
-          secondPhoto: data.secondPhoto,
-          note: data.note,
-          startDate: data.startDate,
-          returnDate: data.returnDate,
-          forwarding: data.forwarding,
-          studentId: data.studentId,
-        },
-      })
-      .catch(handleError);
+    const PrismaInst = await this.prisma.followUp.create({
+      data: {
+        id: data.id,
+        firstPhoto: data.firstPhoto,
+        secondPhoto: data.secondPhoto,
+        note: data.note,
+        startDate: data.startDate,
+        returnDate: data.returnDate,
+        forwarding: data.forwarding,
+        studentId: data.studentId,
+      },
+    });
     return PrismaInst;
   }
 

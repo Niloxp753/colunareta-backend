@@ -14,7 +14,7 @@ import { FindFollowUpModel } from './dto/findFollowUpModel.dto';
 export class FollowUpService {
   constructor(private readonly repository: FollowUpRepository) {}
 
-  async create(dto: CreateFollowUpDto) {
+  async create(dto: CreateFollowUpDto): Promise<FollowUp> {
     return await this.repository.createFollowUp(dto).catch(handleError);
   }
 
