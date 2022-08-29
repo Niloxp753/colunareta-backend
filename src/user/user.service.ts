@@ -72,7 +72,7 @@ export class UserService {
   }
 
   async updateEmail(id: string, dto: UpdateUserDto): Promise<User> {
-    await this.repository.findByUserEmailId(id).catch(handleError);
+    await this.repository.findByUserId(id).catch(handleError);
 
     if (dto.password) {
       if (dto.password !== dto.confirmPassword) {

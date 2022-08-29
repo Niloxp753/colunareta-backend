@@ -51,21 +51,6 @@ export class UserRepository {
     return record;
   }
 
-  async findByUserEmailId(id: string): Promise<User> {
-    const record = await this.prisma.user.findUnique({
-      where: { id },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        password: true,
-        confirmPassword: true,
-        role: true,
-      },
-    });
-    return record;
-  }
-
   async updateUser(id: string, data: UpdateUserDto): Promise<User> {
     return await this.prisma.user.update({
       where: { id },

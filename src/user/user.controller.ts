@@ -59,6 +59,11 @@ export class UserController {
     return this.userService.findById(id);
   }
 
+  @Get('find-one/:id')
+  findOneUser(@Param('id') id: string) {
+    return this.userService.findById(id);
+  }
+
   @Roles(Role.ADMIN, Role.BACKOFFICE, Role.CAMPO)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Patch(':id')
