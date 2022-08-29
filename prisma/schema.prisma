@@ -53,7 +53,7 @@ model Student {
 }
 
 model FollowUp {
-  id          String  @unique
+  id          String  @id @unique @default(uuid())
   startDate   String
   firstPhoto  String
   secondPhoto String

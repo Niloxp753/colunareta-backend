@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { randomUUID } from 'crypto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { FindFollowUpModel } from './dto/findFollowUpModel.dto';
 import { UpdateFollowUpDto } from './dto/update-followUp.dto';
@@ -11,7 +10,7 @@ export class FollowUpRepository {
   async createFollowUp(data: FollowUp): Promise<FollowUp> {
     const PrismaInst = await this.prisma.followUp.create({
       data: {
-        id: randomUUID(),
+        id: data.id,
         firstPhoto: data.firstPhoto,
         secondPhoto: data.secondPhoto,
         note: data.note,
