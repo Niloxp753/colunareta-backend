@@ -1,6 +1,6 @@
 # compiled output
 /node_modules
-dist
+
 
 # Logs
 logs
@@ -36,3 +36,4 @@ lerna-debug.log*
 
 .env
 dist/tsconfig.build.tsbuildinfo
+dist
