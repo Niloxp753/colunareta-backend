@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { handleError } from 'src/utility/handle-error.utility';
 import { FindFollowUpModel } from './dto/findFollowUpModel.dto';
 import { UpdateFollowUpDto } from './dto/update-followUp.dto';
 import { FollowUp } from './entities/followUp.entity';
