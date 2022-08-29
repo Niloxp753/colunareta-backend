@@ -75,7 +75,7 @@ export class UserController {
     return this.userService.update(id, dto);
   }
 
-  @Patch('users/email/:id')
+  @Patch('email/:id')
   @ApiOperation({
     summary: 'Atualiza o usuário pelo ID recebido pelo email',
   })
