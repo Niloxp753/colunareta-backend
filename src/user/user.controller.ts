@@ -81,7 +81,6 @@ export class UserController {
   @Roles(Role.ADMIN)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Delete(':id')
-  @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
   @ApiOperation({
     summary: 'Deleta um usuário pelo ID',
