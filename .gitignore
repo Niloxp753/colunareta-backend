@@ -36,3 +36,4 @@ lerna-debug.log*
 .env
 dist/tsconfig.build.tsbuildinfo
 dist
+node_modules
