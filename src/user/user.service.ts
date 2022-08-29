@@ -80,9 +80,15 @@ export class UserService {
       }
     }
 
-    const data: Partial<User> = { ...dto };
+    const data: Partial<User> = {
+      ...dto,
+      password: await bcrypt.hash(dto.password, 10),
+      confirmPassword: await bcrypt.hash(dto.confirmPassword, 10),
+    };
 
-    return this.repository.updateUser(id, data).catch(handleError);
+    delete dto.confirmPassword;
+
+    return this.repository.updateUserEmail(id, data).catch(handleError);
   }
 
   async delete(id: string): Promise<User> {
