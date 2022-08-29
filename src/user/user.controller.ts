@@ -51,7 +51,6 @@ export class UserController {
   @Roles(Role.ADMIN)
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get(':id')
-  @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
   @ApiOperation({
     summary: 'Visualiza o usuário pelo ID',
@@ -72,12 +71,11 @@ export class UserController {
   }
 
   @Patch('email/:id')
-  @ApiBearerAuth()
   @ApiOperation({
     summary: 'Atualiza o usuário pelo ID recebido pelo email',
   })
   updateEmail(@Param('id') id: string, @Body() dto: UpdateUserDto) {
-    return this.userService.update(id, dto);
+    return this.userService.updateEmail(id, dto);
   }
 
   @Roles(Role.ADMIN)

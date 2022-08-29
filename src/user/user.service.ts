@@ -75,7 +75,7 @@ export class UserService {
     await this.repository.findByUserId(id).catch(handleError);
 
     if (dto.password) {
-      if (dto.password === dto.confirmPassword) {
+      if (dto.password !== dto.confirmPassword) {
         throw new BadRequestException('As senhas informadas não são iguais');
       }
     }
