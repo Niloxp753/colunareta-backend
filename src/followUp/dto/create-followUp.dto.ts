@@ -45,7 +45,6 @@ export class CreateFollowUpDto implements FollowUp {
   })
   note: string;
 
-  @IsString()
   @ApiProperty({
     description: 'Encaminhamento do aluno para as áreas responsáveis',
     example: 'Fisioterapia',
