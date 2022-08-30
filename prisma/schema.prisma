@@ -70,13 +70,14 @@ model FollowUp {
 }
 
 model Forwarding {
-  id           String    @id @unique @default(uuid())
+  id           String   @id @unique @default(uuid())
   raiox        String?
   fisioterapia String?
   colete       String?
   cirurgia     String?
   angulocob    String?
-  FollowUp     FollowUp[]
+  followUpId   String
+  followUp     FollowUp @relation(fields: [followUpId], references: [id])
 }
 
 enum Role {
