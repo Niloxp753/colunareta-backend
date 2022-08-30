@@ -67,14 +67,15 @@ model FollowUp {
 
   @@map("followUp")
 }
+
 model Forwarding {
-  id String @id @unique @default(uuid())
-  raiox  String
-  fisioterapia String
-  colete String
-  cirurgia String
-  angulocob String
-  FollowUp FollowUp[]
+  id           String    @id @unique @default(uuid())
+  raiox        String?
+  fisioterapia String?
+  colete       String?
+  cirurgia     String?
+  angulocob    String?
+  FollowUp     FollowUp[]
 }
 
 enum Role {
@@ -82,4 +83,3 @@ enum Role {
   ADMIN
   CAMPO
 }
-
