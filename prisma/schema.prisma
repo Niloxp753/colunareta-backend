@@ -44,9 +44,9 @@ model Student {
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
   age           String
+  institutionId String
   name          String      @unique
   phone         String
-  institutionId String
   institution   Institution @relation(fields: [institutionId], references: [id])
   followUp      FollowUp[]
 
@@ -54,29 +54,27 @@ model Student {
 }
 
 model FollowUp {
-  id          String       @id @unique @default(uuid())
-  startDate   String
-  firstPhoto  String
-  secondPhoto String
-  returnDate  String
-  note        String?
-  studentId   String
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  forwarding  Forwarding[]
-  students    Student      @relation(fields: [studentId], references: [id])
+  id                   String                 @id @unique @default(uuid())
+  startDate            String
+  firstPhoto           String
+  secondPhoto          String
+  returnDate           String
+  note                 String?
+  studentId            String
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+  students             Student                @relation(fields: [studentId], references: [id])
 
   @@map("followUp")
 }
 
 model Forwarding {
-  id           String     @id @unique @default(uuid())
-  raiox        String?
-  fisioterapia String?
-  colete       String?
-  cirurgia     String?
-  angulocob    String?
-  FollowUp     FollowUp[]
+  id                   String                 @id @unique @default(uuid())
+  raiox                String?
+  fisioterapia         String?
+  colete               String?
+  cirurgia             String?
+  angulocob            String?
 }
 
 enum Role {
