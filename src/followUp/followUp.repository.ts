@@ -21,10 +21,10 @@ export class FollowUpRepository {
           connect: {
             id: data.forwarding.id,
             raiox: data.forwarding.raiox,
-            fisioterapia: data.forwarding.fisioterapia,
-            colete: data.forwarding.colete,
-            cirurgia: data.forwarding.cirurgia,
             angulocob: data.forwarding.angulocob,
+            cirurgia: data.forwarding.cirurgia,
+            colete: data.forwarding.colete,
+            fisioterapia: data.forwarding.fisioterapia,
           },
         },
       },
@@ -56,16 +56,7 @@ export class FollowUpRepository {
         startDate: true,
         returnDate: true,
         note: true,
-        forwarding: {
-          select: {
-            id: true,
-            angulocob: true,
-            cirurgia: true,
-            colete: true,
-            fisioterapia: true,
-            raiox: true,
-          },
-        },
+        forwarding: true,
         studentId: true,
         students: {
           select: {
