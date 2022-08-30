@@ -56,7 +56,15 @@ export class FollowUpRepository {
         startDate: true,
         returnDate: true,
         note: true,
-        forwarding: true,
+        forwarding: {
+          select: {
+            raiox: true,
+            fisioterapia: true,
+            angulocob: true,
+            cirurgia: true,
+            colete: true,
+          },
+        },
         studentId: true,
         students: {
           select: {
