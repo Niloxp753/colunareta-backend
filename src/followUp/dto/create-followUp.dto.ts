@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 import { FollowUp } from '../entities/followUp.entity';
 
 export class CreateFollowUpDto implements FollowUp {
@@ -45,18 +45,21 @@ export class CreateFollowUpDto implements FollowUp {
   })
   note: string;
 
+  @IsBoolean()
   @ApiProperty({
-    description: 'Encaminhamento do aluno para as áreas responsáveis',
-    example: 'Fisioterapia',
+    description:
+      'Encaminhamento do aluno para as áreas responsáveis (raio-x, fisioterapia, colete..)',
+    example: 'true',
   })
-  forwarding?: {
-    id?: string;
-    raiox?: string;
-    fisioterapia?: string;
-    colete?: string;
-    cirurgia?: string;
-    angulocob?: string;
-  };
+  raiox?: boolean;
+
+  fisioterapia?: boolean;
+
+  colete?: boolean;
+
+  cirurgia?: boolean;
+
+  angulocob?: boolean;
 
   @IsString()
   @IsNotEmpty()

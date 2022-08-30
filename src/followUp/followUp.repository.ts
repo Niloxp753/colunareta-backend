@@ -17,16 +17,11 @@ export class FollowUpRepository {
         startDate: data.startDate,
         returnDate: data.returnDate,
         studentId: data.studentId,
-        forwarding: {
-          connect: {
-            id: data.forwarding.id,
-            raiox: data.forwarding.raiox,
-            angulocob: data.forwarding.angulocob,
-            cirurgia: data.forwarding.cirurgia,
-            colete: data.forwarding.colete,
-            fisioterapia: data.forwarding.fisioterapia,
-          },
-        },
+        raiox: data.raiox,
+        angulocob: data.angulocob,
+        cirurgia: data.cirurgia,
+        colete: data.colete,
+        fisioterapia: data.fisioterapia,
       },
     });
     return PrismaInst;
@@ -56,7 +51,11 @@ export class FollowUpRepository {
         startDate: true,
         returnDate: true,
         note: true,
-        forwarding: true,
+        raiox: true,
+        angulocob: true,
+        cirurgia: true,
+        colete: true,
+        fisioterapia: true,
         studentId: true,
         students: {
           select: {

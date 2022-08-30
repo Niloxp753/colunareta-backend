@@ -54,30 +54,23 @@ model Student {
 }
 
 model FollowUp {
-  id          String       @id @unique @default(uuid())
-  startDate   String
-  firstPhoto  String
-  secondPhoto String
-  returnDate  String
-  note        String?
-  forwarding  Forwarding[]
-  studentId   String
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  students    Student      @relation(fields: [studentId], references: [id])
+  id           String   @id @unique @default(uuid())
+  startDate    String
+  firstPhoto   String
+  secondPhoto  String
+  returnDate   String
+  note         String?
+  raiox        Boolean? @default(false)
+  fisioterapia Boolean? @default(false)
+  colete       Boolean? @default(false)
+  cirurgia     Boolean? @default(false)
+  angulocob    Boolean? @default(false)
+  studentId    String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  students     Student  @relation(fields: [studentId], references: [id])
 
   @@map("followUp")
-}
-
-model Forwarding {
-  id           String   @id @unique @default(uuid())
-  raiox        String?
-  fisioterapia String?
-  colete       String?
-  cirurgia     String?
-  angulocob    String?
-  followUpId   String
-  followUp     FollowUp @relation(fields: [followUpId], references: [id])
 }
 
 enum Role {

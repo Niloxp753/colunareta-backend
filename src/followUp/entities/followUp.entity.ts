@@ -5,13 +5,10 @@ export class FollowUp {
   secondPhoto: string;
   returnDate: string;
   note?: string;
-  forwarding?: {
-    id?: string;
-    raiox?: string;
-    fisioterapia?: string;
-    colete?: string;
-    cirurgia?: string;
-    angulocob?: string;
-  };
+  raiox?: boolean;
+  fisioterapia?: boolean;
+  colete?: boolean;
+  cirurgia?: boolean;
+  angulocob?: boolean;
   studentId: string;
 }
