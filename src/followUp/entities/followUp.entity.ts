@@ -1,3 +1,5 @@
+import { Forwarding } from '../model/followUp.enum';
+
 export class FollowUp {
   id?: string;
   startDate: string;
@@ -5,6 +7,6 @@ export class FollowUp {
   secondPhoto: string;
   returnDate: string;
   note?: string;
-  forwarding: string[];
+  forwarding: Forwarding[];
   studentId: string;
 }

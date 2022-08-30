@@ -53,17 +53,17 @@ model Student {
 }
 
 model FollowUp {
-  id          String  @id @unique @default(uuid())
+  id          String       @id @unique @default(uuid())
   startDate   String
   firstPhoto  String
   secondPhoto String
   returnDate  String
   note        String?
   studentId   String
-  forwarding  String[]
-  students    Student  @relation(fields: [studentId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  forwarding  Forwarding[]
+  students    Student      @relation(fields: [studentId], references: [id])
 
   @@map("followUp")
 }
@@ -72,4 +72,12 @@ enum Role {
   BACKOFFICE
   ADMIN
   CAMPO
+}
+
+enum Forwarding {
+  RAIOX
+  FISIOTERAPIA
+  COLETE
+  CIRURGIA
+  ANGULOCOB
 }

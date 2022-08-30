@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
 import { FollowUp } from '../entities/followUp.entity';
+import { Forwarding } from '../model/followUp.enum';
 
 export class CreateFollowUpDto implements FollowUp {
   id?: string;
@@ -51,7 +52,7 @@ export class CreateFollowUpDto implements FollowUp {
     description: 'Encaminhamento do aluno para as áreas responsáveis',
     example: 'Fisioterapia',
   })
-  forwarding: string[];
+  forwarding: Forwarding[];
 
   @IsString()
   @IsNotEmpty()
