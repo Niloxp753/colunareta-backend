@@ -51,24 +51,27 @@ export class UserService {
     return record;
   }
 
-  async update(id: string, dto: UpdateUserDto): Promise<User> {
+  async update(id: string, dto: UpdateUserDto) {
     await this.repository.findByUserId(id).catch(handleError);
 
     if (dto.password) {
       if (dto.password !== dto.confirmPassword) {
         throw new BadRequestException('As senhas informadas não são iguais');
       }
+
+      const data = {
+        ...dto,
+        password: await bcrypt.hash(dto.password, 10),
+        confirmPassword: await bcrypt.hash(dto.confirmPassword, 10),
+      };
+
+      delete dto.confirmPassword;
+
+      return this.repository.updateUser(id, data).catch(handleError);
+    } else {
+      const data = { ...dto };
+      return this.repository.updateUser(id, data).catch(handleError);
     }
-
-    const data: Partial<User> = {
-      ...dto,
-      password: await bcrypt.hash(dto.password, 10),
-      confirmPassword: await bcrypt.hash(dto.confirmPassword, 10),
-    };
-
-    delete dto.confirmPassword;
-
-    return this.repository.updateUser(id, data).catch(handleError);
   }
 
   async updateEmail(id: string, dto: UpdateUserDto): Promise<User> {
@@ -80,7 +83,7 @@ export class UserService {
       }
     }
 
-    const data: Partial<User> = {
+    const data = {
       ...dto,
       password: await bcrypt.hash(dto.password, 10),
       confirmPassword: await bcrypt.hash(dto.confirmPassword, 10),
