@@ -10,7 +10,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Coluna Reta')
-    .setDescription('A fazer')
+    .setDescription(
+      'O projeto da COLUNA RETA é a criação de uma aplicação web onde os colaboradores de backoffice e administradores poderão acessar as informações colhidas em campo.',
+    )
     .setVersion('1.0.0')
     .addTag('status')
     .addTag('auth')
