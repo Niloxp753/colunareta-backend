@@ -52,7 +52,7 @@ export class InstitutionService {
     return this.repository.updateInstitution(id, data).catch(handleError);
   }
 
-  async delete(id: string): Promise<Institution> {
+  async delete(id: string) {
     const record = await this.repository
       .deleteInstitution(id)
       .catch(handleError);

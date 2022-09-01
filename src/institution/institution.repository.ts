@@ -81,7 +81,30 @@ export class InstitutionRepository {
     });
   }
 
-  async deleteInstitution(id: string): Promise<Institution> {
-    return await this.prisma.institution.delete({ where: { id } });
+  async deleteInstitution(id: string) {
+    await this.prisma.followUp.deleteMany({
+      where: {
+        students: {
+          institutionId: id,
+        },
+      },
+    });
+
+    await this.prisma.student.deleteMany({
+      where: {
+        institutionId: id,
+      },
+    });
+
+    return await this.prisma.institution.delete({
+      where: { id },
+      include: {
+        students: {
+          select: {
+            institutionId: true,
+          },
+        },
+      },
+    });
   }
 }
