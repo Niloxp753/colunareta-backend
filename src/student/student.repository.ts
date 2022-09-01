@@ -95,6 +95,12 @@ export class StudentRepository {
   }
 
   async deleteStudent(id: string): Promise<Student> {
+    await this.prisma.followUp.deleteMany({
+      where: {
+        studentId: id,
+      },
+    });
+
     return await this.prisma.student.delete({
       where: { id },
     });
